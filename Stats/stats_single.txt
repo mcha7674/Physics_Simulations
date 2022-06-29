@@ -2183,3 +2183,383 @@ Chosen Angle: 20
 TIME STAMP: 2022-06-28 22:19:28
 ====================================
 
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: true
+maxH: 910.249 meters
+Range: 3310.81 meters
+flightTime: 27.2 seconds
+PROJECTILE:
+mass = 100 kg 
+radius = 0.1 meters
+area cross section = 0.0314159 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0.4
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 200
+Chosen Angle: 45
+
+TIME STAMP: 2022-06-29 11:07:57
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: true
+Drag: true
+maxH: 912.172 meters
+Range: 3328.85 meters
+flightTime: 27.25 seconds
+PROJECTILE:
+mass = 100 kg 
+radius = 0.1 meters
+area cross section = 0.0314159 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0.4
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 200
+Chosen Angle: 45
+
+TIME STAMP: 2022-06-29 11:07:57
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 1019.37 meters
+Range: 4077.48 meters
+flightTime: 28.85 seconds
+PROJECTILE:
+mass = 100 kg 
+radius = 0.1 meters
+area cross section = 0.0314159 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0.4
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 200
+Chosen Angle: 45
+
+TIME STAMP: 2022-06-29 11:07:57
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: true
+maxH: 910.249 meters
+Range: 3310.81 meters
+flightTime: 27.2 seconds
+PROJECTILE:
+mass = 100 kg 
+radius = 0.1 meters
+area cross section = 0.0314159 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0.4
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 200
+Chosen Angle: 45
+
+TIME STAMP: 2022-06-29 11:08:10
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: true
+Drag: true
+maxH: 912.172 meters
+Range: 3328.85 meters
+flightTime: 27.25 seconds
+PROJECTILE:
+mass = 100 kg 
+radius = 0.1 meters
+area cross section = 0.0314159 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0.4
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 200
+Chosen Angle: 45
+
+TIME STAMP: 2022-06-29 11:08:10
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 1019.37 meters
+Range: 4077.48 meters
+flightTime: 28.85 seconds
+PROJECTILE:
+mass = 100 kg 
+radius = 0.1 meters
+area cross section = 0.0314159 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0.4
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 200
+Chosen Angle: 45
+
+TIME STAMP: 2022-06-29 11:08:10
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 1019.37 meters
+Range: 4077.48 meters
+flightTime: 28.85 seconds
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 200
+Chosen Angle: 45
+
+TIME STAMP: 2022-06-29 11:09:12
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 6116.2 meters
+Range: 14124.8 meters
+flightTime: 70.65 seconds
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 400
+Chosen Angle: 60
+
+TIME STAMP: 2022-06-29 11:10:22
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: true
+maxH: 2327.46 meters
+Range: 8266.76 meters
+flightTime: 43 seconds
+PROJECTILE:
+mass = 100 kg 
+radius = 0.1 meters
+area cross section = 0.0314159 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0.5
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 400
+Chosen Angle: 40
+
+TIME STAMP: 2022-06-29 11:35:05
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: true
+Drag: true
+maxH: 2361.79 meters
+Range: 8551.96 meters
+flightTime: 43.5 seconds
+PROJECTILE:
+mass = 100 kg 
+radius = 0.1 meters
+area cross section = 0.0314159 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0.5
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 400
+Chosen Angle: 40
+
+TIME STAMP: 2022-06-29 11:35:05
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 3369.21 meters
+Range: 16064.4 meters
+flightTime: 52.5 seconds
+PROJECTILE:
+mass = 100 kg 
+radius = 0.1 meters
+area cross section = 0.0314159 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0.5
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 400
+Chosen Angle: 40
+
+TIME STAMP: 2022-06-29 11:35:05
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 127.375 meters
+Range: 885.072 meters
+flightTime: 11 seconds
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 100
+Chosen Angle: 30
+
+TIME STAMP: 2022-06-29 11:37:21
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 126.97 meters
+Range: 886.285 meters
+flightTime: 10.8 seconds
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 100
+Chosen Angle: 30
+
+TIME STAMP: 2022-06-29 11:37:39
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 127.421 meters
+Range: 887.894 meters
+flightTime: 10.2 seconds
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 100
+Chosen Angle: 30
+
+TIME STAMP: 2022-06-29 11:38:08
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 127.306 meters
+Range: 888.158 meters
+flightTime: 10.5 seconds
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 100
+Chosen Angle: 30
+
+TIME STAMP: 2022-06-29 11:38:16
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 127.421 meters
+Range: 898.961 meters
+flightTime: 10.2 seconds
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 100
+Chosen Angle: 30
+
+TIME STAMP: 2022-06-29 11:38:24
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 123.42 meters
+Range: 887.511 meters
+flightTime: 12 seconds
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 100
+Chosen Angle: 30
+
+TIME STAMP: 2022-06-29 11:38:31
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 127.306 meters
+Range: 882.951 meters
+flightTime: 10.5 seconds
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 100
+Chosen Angle: 30
+
+TIME STAMP: 2022-06-29 11:38:39
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 509.499 meters
+Range: 3534.31 meters
+flightTime: 20.5 seconds
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 200
+Chosen Angle: 30
+
+TIME STAMP: 2022-06-29 11:40:01
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 509.683 meters
+Range: 3532.69 meters
+flightTime: 20.4 seconds
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 200
+Chosen Angle: 30
+
+TIME STAMP: 2022-06-29 11:40:24
+====================================
+

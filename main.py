@@ -61,7 +61,7 @@ class MainWindow(QMainWindow):
             "dtSlider":[self.ui.timeStepSlider,0],
             "stepAngleSlider":[self.ui.stepAngleSlider,0],
             "stepAngle":[self.ui.stepAngleCounter,0],
-            "dt":[self.ui.timeStepCounter,0.05]        
+            "dt":[self.ui.timeStepCounter,0.1]        
         }
         # STORE Line Edit Inputs and intake signals
         self.inputs["x0"][0].editingFinished.connect(lambda:self.storeLineValue(key="x0"))
@@ -85,6 +85,8 @@ class MainWindow(QMainWindow):
         self.trajType = "none" # Single, Multi, Compare, and None
         # Inputs gathered, now incorporate the launch button
         self.ui.launchButton.clicked.connect(lambda:self.launch())
+        # initialize gif
+        self.movie = QMovie("Plots/graph.gif")
         
     def launch(self):
         """ The MOTHER function
@@ -196,7 +198,6 @@ class MainWindow(QMainWindow):
         # Animation
         # display the animation
         self._createAnimation()
-        self.movie = QMovie("Plots/graph.gif")
         self.ui.displayLabel.setMovie(self.movie)
         self.movie.start()
 

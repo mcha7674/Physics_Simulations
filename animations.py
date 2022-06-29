@@ -4,6 +4,7 @@ from matplotlib.animation import PillowWriter
 from matplotlib.animation import FuncAnimation
 import matplotlib.colors
 import math
+import os
 """
 Writing a class that animates a plot as a gif
 Creates x vs y animation for a singular trajectory
@@ -26,10 +27,9 @@ class Animation():
         self.dt = self.t[1] - self.t[0] 
         self.fps = 1/self.dt # Get accurate fps to simulate real time trajectory
         print("FPS: ",self.fps)
-        if (self.fps <= 10):
-            # Set to 15 if below 10 to prioritize aesthetic
-            self.fps = 15
-        print("FPS: ",self.fps)
+        # if (self.fps <= 10):
+        #     # Set to 15 if below 10 to prioritize aesthetic
+        #     self.fps = 15
     
     def _initPlot(self):
         self.curve, = self.ax.plot([],[],c = self.color)
@@ -72,18 +72,18 @@ class Animation():
         self.animation = FuncAnimation(self.fig,func=self._animate,interval = interval,
             frames=len(self.df["x"]),repeat=False,blit=True)        
 
-    def saveAnimation(self,gifPath = 'Plots/graph.gif',dpi = 200):
-        self.animation.save(gifPath,writer = "pillow" ,fps=self.fps)
+    def saveAnimation(self,gifPath = 'Plots/graph.gif',dpi = 300):
+        self.animation.save(gifPath,writer='pillow',fps=self.fps)
 
     def showPlot(self):
         plt.show()
 
-# ani = Animation("Data/trajData2.csv",figSize=(6,5))
-# ani.decorateGraph(title = "Single Trajectory", xLabel="X (meters)",
-# yLabel= "Y (meters)")
-# ani.createAnimation(interval=1)
-# ani.showPlot()
-# ani.saveAnimation()
+ani = Animation("Data/trajData.csv",figSize=(6,5))
+ani.decorateGraph(title = "Trajectories in real time", xLabel="X (meters)",
+yLabel= "Y (meters)")
+ani.createAnimation(interval=1)
+#ani.showPlot()
+ani.saveAnimation()
 
 
   

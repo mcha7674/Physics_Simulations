@@ -3,15 +3,22 @@
 ################################################################################
 ## Form generated from reading UI file 'physGUI.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.2
+## Created by: Qt User Interface Compiler version 6.3.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide2.QtCore import *
-from PySide2.QtGui import *
-from PySide2.QtWidgets import *
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
+    QLabel, QLineEdit, QMainWindow, QPushButton,
+    QRadioButton, QSizePolicy, QSlider, QStackedWidget,
+    QToolButton, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -114,7 +121,7 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.homeButton.sizePolicy().hasHeightForWidth())
         self.homeButton.setSizePolicy(sizePolicy2)
         font = QFont()
-        font.setFamily(u"Segoe UI")
+        font.setFamilies([u"Segoe UI"])
         font.setPointSize(13)
         font.setBold(False)
         font.setItalic(False)
@@ -519,6 +526,7 @@ class Ui_MainWindow(object):
         sizePolicy8.setVerticalStretch(0)
         sizePolicy8.setHeightForWidth(self.launchBody.sizePolicy().hasHeightForWidth())
         self.launchBody.setSizePolicy(sizePolicy8)
+        self.launchBody.setMaximumSize(QSize(16777215, 16777215))
         self.launchBody.setStyleSheet(u"QLineEdit{\n"
 "background:rgb(255,255,255);\n"
 "}\n"
@@ -1124,8 +1132,8 @@ class Ui_MainWindow(object):
         self.timeStepSlider = QSlider(self.frame_32)
         self.timeStepSlider.setObjectName(u"timeStepSlider")
         self.timeStepSlider.setMaximumSize(QSize(80, 15))
-        self.timeStepSlider.setMinimum(5)
-        self.timeStepSlider.setMaximum(100)
+        self.timeStepSlider.setMinimum(10)
+        self.timeStepSlider.setMaximum(200)
         self.timeStepSlider.setOrientation(Qt.Horizontal)
         self.timeStepSlider.setTickPosition(QSlider.NoTicks)
         self.timeStepSlider.setTickInterval(1)
@@ -1150,6 +1158,9 @@ class Ui_MainWindow(object):
         self.launchDisplay.setSizePolicy(sizePolicy8)
         self.launchDisplay.setMinimumSize(QSize(0, 0))
         self.launchDisplay.setMaximumSize(QSize(629, 16777215))
+        self.launchDisplay.setStyleSheet(u"QLabel #displayLabel{\n"
+"border:5px solid white;\n"
+"}")
         self.launchDisplay.setFrameShape(QFrame.StyledPanel)
         self.launchDisplay.setFrameShadow(QFrame.Raised)
         self.verticalLayout_10 = QVBoxLayout(self.launchDisplay)
@@ -1160,6 +1171,7 @@ class Ui_MainWindow(object):
         self.frame_34.setObjectName(u"frame_34")
         sizePolicy8.setHeightForWidth(self.frame_34.sizePolicy().hasHeightForWidth())
         self.frame_34.setSizePolicy(sizePolicy8)
+        self.frame_34.setStyleSheet(u"")
         self.frame_34.setFrameShape(QFrame.StyledPanel)
         self.frame_34.setFrameShadow(QFrame.Raised)
         self.verticalLayout_34 = QVBoxLayout(self.frame_34)
@@ -1174,7 +1186,14 @@ class Ui_MainWindow(object):
         sizePolicy10.setHeightForWidth(self.displayLabel.sizePolicy().hasHeightForWidth())
         self.displayLabel.setSizePolicy(sizePolicy10)
         self.displayLabel.setMinimumSize(QSize(7, 32))
+        font7 = QFont()
+        font7.setPointSize(16)
+        font7.setBold(True)
+        self.displayLabel.setFont(font7)
+        self.displayLabel.setStyleSheet(u"border:1px solid white;\n"
+"")
         self.displayLabel.setScaledContents(True)
+        self.displayLabel.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_34.addWidget(self.displayLabel)
 
@@ -1255,9 +1274,9 @@ class Ui_MainWindow(object):
         self.Title = QLabel(self.frame_2)
         self.Title.setObjectName(u"Title")
         self.Title.setMaximumSize(QSize(16777215, 91))
-        font7 = QFont()
-        font7.setPointSize(28)
-        self.Title.setFont(font7)
+        font8 = QFont()
+        font8.setPointSize(28)
+        self.Title.setFont(font8)
         self.Title.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_8.addWidget(self.Title)
@@ -1276,9 +1295,9 @@ class Ui_MainWindow(object):
         self.Description = QLabel(self.frame)
         self.Description.setObjectName(u"Description")
         self.Description.setMaximumSize(QSize(16777215, 100))
-        font8 = QFont()
-        font8.setPointSize(16)
-        self.Description.setFont(font8)
+        font9 = QFont()
+        font9.setPointSize(16)
+        self.Description.setFont(font9)
         self.Description.setTextFormat(Qt.RichText)
         self.Description.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
         self.Description.setWordWrap(True)
@@ -1416,8 +1435,8 @@ class Ui_MainWindow(object):
         self.label_21.setText(QCoreApplication.translate("MainWindow", u"Simulation Inputs", None))
         self.label_19.setText(QCoreApplication.translate("MainWindow", u"Time Step:\n"
 "(seconds)", None))
-        self.timeStepCounter.setText(QCoreApplication.translate("MainWindow", u"0.05", None))
-        self.displayLabel.setText("")
+        self.timeStepCounter.setText(QCoreApplication.translate("MainWindow", u"0.1", None))
+        self.displayLabel.setText(QCoreApplication.translate("MainWindow", u"DISPLAY", None))
         self.launchButton_2.setText(QCoreApplication.translate("MainWindow", u"Plots", None))
         self.launchButton.setText(QCoreApplication.translate("MainWindow", u"LAUNCH", None))
         self.launchButton_3.setText(QCoreApplication.translate("MainWindow", u"Stats", None))

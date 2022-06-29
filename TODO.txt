@@ -1,0 +1,29 @@
+Update 1 - COMPLETE
+    1. basic io and console menu
+    2. accurate physics 
+    3. file handling
+    4. plots accurate and aesthetic
+================================================
+Update 2 - NOT STARTED
+    1. polish and organize current code
+        a. put repeatable code in functions, create another py file to keep functions seperate from main- COMPLETE
+        b. shorten/ make the cpp code more readable - In Progress
+    2. create a venv for python and only include the necessary libraries to preserve space - COMPLETE
+================================================
+Update 3 - NOT STARTED
+    1. Incorporate PYQT5/QT GUI 
+        a. Must take in and proceses all user input from GUI
+        b. Should have a side window for plots OR needs to allow
+        for easy opening, saving, and showing of plots.
+        c. stats saving systems into dat files.
+        d. create a nice aesthetic
+================================================
+Update 4 - NOT STARTED
+    1. Incorporate 3D animations of the projectile motion simultion
+================================================
+FINAL UPDATE - NOT STARTED
+    1. incorporate user input error management
+    2. Polish code
+    3. Organize code and comment
+    4. Create a README
+================================================

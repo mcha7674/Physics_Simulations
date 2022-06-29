@@ -3,12 +3,12 @@
 #include <string>
 #include <math.h>
 #include <vector>
-#include <sstream>
 
 #include "trajectory.h"
 #include "projectile.h"
 #include "support.h"
-
+#include "Menu/menu.h"
+#include "Menu/menu.cpp"
 using namespace std;
 
 /*
@@ -27,46 +27,55 @@ Adiabatic approach assumes very slow convection, so that projectile does not hav
 
 int main()
 {
-    // Input File Handling
-    string trajType = "";
-    vector <double> numericInputs;
-    vector <bool> booleanInputs;
-    string filename = "inputs.dat";
-    handleFileInputs(filename, numericInputs, booleanInputs, trajType);
-    for (int i = 0; i < numericInputs.size();i++)
-    {
-        cout << numericInputs[i] << endl;
-    }
-    for (int i = 0; i < booleanInputs.size();i++)
-    {
-        cout << boolalpha <<booleanInputs[i] << endl;
-    }
-    cout << trajType << endl;
-    // general trajectory parameters - init like this for readability
-    double X0 = numericInputs[0];
-    double Y0 = numericInputs[1];
-    double V0 = numericInputs[2];
-    double angle = numericInputs[3];
-    double finalAngle = numericInputs[4];
-    double mass = numericInputs[5];
-    double radius = numericInputs[6];
-    double C = numericInputs[7];
-    double T0 = numericInputs[8]; 
-    double vWindX = numericInputs[9];
-    bool airToggle = booleanInputs[0];
-    bool vacToggle = booleanInputs[1];
-    bool compareToggle = booleanInputs[2];
+    // MENU
+    Menu menu;
+    menu.add_title("Semi-Realistic Projectile Motion Simulation");
+    string desc = "In this simulation, you will be provided three"
+                  "\noptions for the type of plots and"
+                  "\ntrajectories you want. The program"
+                  "\nwill then calculate the relevant data, plots,"
+                  "\nand statistics and save the output in"
+                  "\nthe folder named 'data_plots_stats'.\n";
+
+    menu.add_desc(desc);
+    menu.display_title();
+    menu.display_desc();
+    menu.add_option("Single Trajectory.");
+    menu.add_option("Various trajectories at varying angles.");
+    menu.add_option("Trajectory Drag vs altitude-dependent adiabatic drag Comparison.");
+    menu.display_options();
+    cout << endl;
+    int choice = menu.choose();
+    // store choice to be read through python
+    ofstream choiceF("choice.txt");
+    choiceF << choice;
+    choiceF.close();
+
+    // general trajectory parameters
+    double angle = 0;
+    double V0 = 0;
+    double X0 = 0;
+    double Y0 = 0;
+    double dt = 0;
+    double mass = 0;
+    double radius = 0;
+    // Drag Dependent parameters
+    double C = 0;      // drag coefficient
+    double vWindX = 0; // wind velocity in X
+    // Adiabatic Height Variation Parameters
+    double T0 = 0; // Kelvin
+    bool drag = false;
     bool adiabatic = false;
-    double stepAngle = numericInputs[10];
-    double dt = numericInputs[11];
-    if (T0 != 0 || trajType == "compare"){adiabatic = true;}
+
     // Trajectory Customization!!! --- SINGLE TRAJECTORY
-    cout << "final angle: "<< finalAngle << endl;
-    if (trajType == "single")
+    if (choice == 1)
     {
+        // user input for custom scenario
+        prompt_toggle_Inits(drag, adiabatic, C, vWindX, T0,
+                            angle, V0, X0, Y0, dt, mass, radius, false);
         Projectile shell(mass, radius);
         Trajectory traj(angle, V0, X0, Y0, dt, C, vWindX, T0,
-                        airToggle, adiabatic, shell);
+                        drag, adiabatic, shell);
         cout << "Trajectory Initialized!" << endl;
         cout << "Creating Trajectory Data..." << endl;
         traj.createTrajectory();
@@ -81,21 +90,37 @@ int main()
         cout << "Stats stored!" << endl;
         f.close();
     }
-    else if (trajType == "multi") // Many Trajectories at various angles
+
+    else if (choice == 2) // Many Trajectories at various angles
     {
+        double dTheta = 0;
+        double maxAngle = 0;
         vector<Trajectory> trajArray;
+        // user input for custom scenario
+        prompt_toggle_Inits(drag, adiabatic, C, vWindX, T0,
+                            angle, V0, X0, Y0, dt, mass, radius, false);
         Projectile shell(mass, radius);
-        // create trajectory
-        while (angle <= finalAngle)
+        cout << "Specify the angle step: ";
+        cin >> dTheta;
+        cout << "Specify the Max angle: ";
+        cin >> maxAngle;
+        while (maxAngle < angle)
         {
-        Trajectory traj(angle, V0, X0, Y0, dt, C, vWindX, T0,
-                        airToggle, adiabatic, shell);
-        traj.set_angleStep(stepAngle);
-        traj.createTrajectory();
-        // store trajectory
-        trajArray.push_back(traj);
-        // update current angle
-        angle += stepAngle;
+            cout << "Max angle must be greater than initial angle!" << endl;
+            cout << "Specify the Max angle: ";
+            cin >> maxAngle;
+        }
+        while (angle <= maxAngle)
+        {
+            // create trajectory
+            Trajectory traj(angle, V0, X0, Y0, dt, C, vWindX, T0,
+                            drag, adiabatic, shell);
+            traj.set_angleStep(dTheta);
+            traj.createTrajectory();
+            // store trajectory
+            trajArray.push_back(traj);
+            // update current angle
+            angle += dTheta;
         }
         // output trajectory data
         string filename = "Data/trajData2.csv";
@@ -123,11 +148,13 @@ int main()
         trajArray[maxTrajIndex].outputData(f2);
         cout << "Max trajectory data stored in '" << filename << "'" << endl
              << endl;
-        trajArray[0].outputStatsMany(angle, finalAngle, stepAngle);
+        trajArray[0].outputStatsMany(angle, maxAngle, dTheta);
         f2.close();
     }
-    else if (trajType == "compare")
+    else if (choice == 3)
     {
+        prompt_toggle_Inits(drag, adiabatic, C, vWindX, T0,
+                            angle, V0, X0, Y0, dt, mass, radius, true);
         Projectile shell(mass, radius);
         Trajectory trajDrag(angle, V0, X0, Y0, dt, C, vWindX, T0,
                             true, false, shell);
@@ -162,5 +189,6 @@ int main()
         cout << "Stats stored!" << endl;
         f.close();
     }
+
     return 0;
 }

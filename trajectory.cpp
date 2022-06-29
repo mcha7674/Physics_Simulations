@@ -107,22 +107,14 @@ void Trajectory::createTrajectory()
             Fy = ((B2)*vDiffAbs * vY);
         }
         // Append new X and Y values
-        if (Y >= 0)
-        {
-            xData.push_back(X);
-            yData.push_back(Y);
-            vData.push_back(V);
-        }
-        
+        xData.push_back(X);
+        yData.push_back(Y);
+        vData.push_back(V);
         i++;
     }
     range = interpolatedRange(); // range of the trajectory in meters
     flightTime = t;
     maxHeight = findMaxY();
-    // add final data point
-    xData.push_back(range);
-    yData.push_back(0);
-    vData.push_back(0);
 }
 // INTERPOLATED RANGE FUNCTION
 double Trajectory::interpolatedRange()

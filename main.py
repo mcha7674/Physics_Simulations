@@ -31,6 +31,12 @@ import gui_source as gui # All code for the GUI
 
 
 
+# EXIT Condition
+try:
+    sys.exit(app.exec_())
+except SystemExit:
+    print("Closing Window...")
+
 
 
 

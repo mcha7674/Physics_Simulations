@@ -12,7 +12,7 @@ class trajPlot():
     plotDir = "Plots/"
     dataDir = "Data/"
     Ids = ("Drag","HEIGHT_DRAG","NO_DRAG")
-    def __init__(self,pName="",dName="",figsize = (11,10),
+    def __init__(self,pName="",dName="",figsize = (12,10),
     comparisons=False, manyTraj = False, scatterSize = 2):
         # init and default plot/data names
         self.plotName = pName
@@ -90,7 +90,3 @@ class trajPlot():
         self.axes.legend()
     def getAngle(self):
         return self.df["angle"][0]
-
-# df = pd.read_csv("Data/trajData.csv")
-# plt.plot(df["x"], df["y"])
-# plt.savefig("Plots/test.png")

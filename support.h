@@ -7,6 +7,9 @@
 using namespace std;
 
 double degreeToRads(double degrees);
-
-void handleFileInputs(string filename, vector<double> &numericInputs,
-vector<bool> &booleanInputs, string &trajType);
+void prompt_toggle_Inits(bool &drag, bool &adiabatic, double &C,
+                         double &windX,
+                         double &T, double &angle,
+                         double &v0, double &x0,
+                         double &y0, double &dt,
+                         double &mass, double &radius, bool compare);

@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <string>
 #include <math.h>
 #include <vector>
@@ -15,52 +14,65 @@ double degreeToRads(double degrees)
     return convert;
 }
 
-
-void handleFileInputs(string filename, vector<double> &numericInputs,vector<bool> &booleanInputs, string &trajType)
+void prompt_toggle_Inits(bool &drag, bool &adiabatic, double &C,
+                         double &windX,
+                         double &T, double &angle,
+                         double &v0, double &x0,
+                         double &y0, double &dt,
+                         double &mass, double &radius, bool compare)
 {
-    // initiate input filestream
-    ifstream ifs(filename);
-    string line = "";
-    int i = 0;
-    while(getline(ifs, line))
-    { 
-        // line 0 is trajType
-        // lines 1 - 10 are numeric
-        // lines 11-13 are boolean
-        // last 2 lines are also numeric
-        string inputName;
-        double inputValue;
-        stringstream ss(line); // initiate line into string stream
-        if (i == 0)
-        { // call twice to overwrite label
-            string name;
-            ss >> name;
-            ss >> trajType;
-        }
-        else if (i > 10 && i <= 13)
+    if (!compare)
+    {
+        drag, adiabatic = false;
+        char choice;
+        cout << "Introduce drag? (y/n): ";
+        cin >> choice;
+        if (choice == 'y')
         {
-            string value;
-            string name;
-            ss >> name;
-            ss >> value;
-            if (value == "True")
+            drag = true;
+            cout << "Introduce Adiabatic Height Variation? (y/n): ";
+            cin >> choice;
+            if (choice == 'y')
             {
-                booleanInputs.push_back(true);
-            }
-            else
-            {
-                booleanInputs.push_back(false);
+                adiabatic = true;
             }
         }
-        else
+        if (drag)
         {
-            double value;
-            string name;
-            ss >> name;
-            ss >> value;
-            numericInputs.push_back(value);
+            cout << "Enter Drag Coefficient: ";
+            cin >> C;
+            cout << "Enter wind velocity in x direction (in m/s): ";
+            cin >> windX;
         }
-        i++;
+        if (adiabatic)
+        {
+            // do not repeat air density question common to drag also
+            cout << "Enter atmospheric temperature (in Kelvin): ";
+            cin >> T;
+        }
     }
-
+    else // include options that encapsulate, drag, no drag, and drag with hight dependence
+    {
+        cout << "Enter Drag Coefficient: ";
+        cin >> C;
+        cout << "Enter wind velocity in x direction (in m/s): ";
+        cin >> windX;
+        cout << "Enter atmospheric temperature (in Kelvin): ";
+        cin >> T;
+    }
+    // General prompts scenario
+    cout << "Initial x-position of projectile (in meters): ";
+    cin >> x0;
+    cout << "Initial y-position of projectile (in meters): ";
+    cin >> y0;
+    cout << "Initial trajectory Angle (in degrees): ";
+    cin >> angle;
+    cout << "Initial velocity of projectile (in m/s): ";
+    cin >> v0;
+    cout << "Radius of shell (in meters): ";
+    cin >> radius;
+    cout << "Mass of shell (in kg): ";
+    cin >> mass;
+    cout << "Time step for the simulation (dt): ";
+    cin >> dt;
 }

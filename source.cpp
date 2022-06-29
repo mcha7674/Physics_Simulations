@@ -101,11 +101,12 @@ int main()
         string filename = "Data/trajData2.csv";
         cout << "Outputting Trajectory Data to '"<< filename<< "'..." << endl;
         ofstream f(filename);
-        f << "x,"<< "y,"<< "t,"<< "v,"<< "angle" << endl;
+        f << "x,"<< "y,"<< "t,"<< "v,"<< "angle," << "traj" <<endl;
         for (int i = 0; i < trajArray.size(); i++)
         {
-            trajArray[i].outputData(f);
-            cout << "Trajectory " << i + 1 << " data stored!" << endl
+            int trajNum = i+1;
+            trajArray[i].outputMultiData(f, trajNum);
+            cout << "Trajectory " << trajNum << " data stored!" << endl
                  << endl;
         }
         f.close();

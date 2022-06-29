@@ -85,8 +85,6 @@ class MainWindow(QMainWindow):
         self.trajType = "none" # Single, Multi, Compare, and None
         # Inputs gathered, now incorporate the launch button
         self.ui.launchButton.clicked.connect(lambda:self.launch())
-        # initialize gif
-        self.movie = QMovie("Plots/graph.gif")
         
     def launch(self):
         """ The MOTHER function
@@ -188,9 +186,21 @@ class MainWindow(QMainWindow):
     
     def _createAnimation(self):
         # Create Animation
-        ani = animations.Animation(self.dataPath,figSize=(6,5))
+        if self.trajType == "single":
+            self.isCompare = False
+            self.isMulti = False
+            self.legend = False
+        elif self.trajType == "multi":
+            self.isCompare = False
+            self.isMulti = True
+            self.legend = True
+        elif self.trajType == "compare":
+            self.isCompare = True
+            self.isMulti = False
+            self.legend = True
+        ani = animations.Animation(self.dataPath,figSize=(6,5),isComparing=self.isCompare,isMulti=self.isMulti)
         ani.decorateGraph(title = "Trajectory", xLabel="X (meters)",
-        yLabel= "Y (meters)")
+        yLabel= "Y (meters)",setLegend=self.legend)
         ani.createAnimation(interval=1)
         ani.saveAnimation()
 
@@ -198,6 +208,8 @@ class MainWindow(QMainWindow):
         # Animation
         # display the animation
         self._createAnimation()
+        # initialize gif
+        self.movie = QMovie("Plots/graph.gif")
         self.ui.displayLabel.setMovie(self.movie)
         self.movie.start()
 

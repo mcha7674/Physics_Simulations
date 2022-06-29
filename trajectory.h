@@ -91,6 +91,7 @@ public:
     // Data Output
     void outputData(ofstream &f);
     void outputComparisonData(ofstream &f, enum trajType);
+    void outputMultiData(ofstream &f, int trajNum);
     // Stats Output
     void outputStatsSingle();                                                 // stats for single trajectory at fixed angle
     void outputStatsMany(double initAngle, double finalAngle, double dTheta); // stats for varying angles, multiple trajectories

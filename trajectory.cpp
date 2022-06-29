@@ -160,6 +160,15 @@ void Trajectory::outputData(ofstream &f)
     }
 }
 
+void Trajectory::outputMultiData(ofstream &f, int trajNum)
+{
+    for (int i = 0; i < xData.size(); i++)
+    {
+        double t = i * dt;
+        f << xData[i] << "," << yData[i] << "," << t << "," << vData[i] << "," << angle<<","<<trajNum << endl;
+    }
+}
+
 // Data output for comparison plots
 void Trajectory::outputComparisonData(ofstream &f, trajType type)
 {

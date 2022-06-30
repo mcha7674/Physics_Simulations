@@ -15,17 +15,17 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
-    QLabel, QLineEdit, QMainWindow, QPushButton,
-    QRadioButton, QSizePolicy, QSlider, QStackedWidget,
-    QToolButton, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QGridLayout,
+    QHBoxLayout, QLabel, QLineEdit, QMainWindow,
+    QPushButton, QRadioButton, QSizePolicy, QSlider,
+    QStackedWidget, QToolButton, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1193, 672)
+        MainWindow.resize(1069, 672)
         MainWindow.setStyleSheet(u"*{\n"
 "border:none;\n"
 "background-color:transparent;\n"
@@ -147,26 +147,13 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.launchMenuButton)
 
-        self.statsButton = QToolButton(self.menuFrame2)
-        self.statsButton.setObjectName(u"statsButton")
-        sizePolicy2.setHeightForWidth(self.statsButton.sizePolicy().hasHeightForWidth())
-        self.statsButton.setSizePolicy(sizePolicy2)
-        icon3 = QIcon()
-        icon3.addFile(u":/Icons/iconsWhiteSize40/table.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.statsButton.setIcon(icon3)
-        self.statsButton.setIconSize(QSize(23, 25))
-        self.statsButton.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
-        self.statsButton.setAutoRaise(False)
-
-        self.verticalLayout_4.addWidget(self.statsButton)
-
         self.plotsButton = QToolButton(self.menuFrame2)
         self.plotsButton.setObjectName(u"plotsButton")
         sizePolicy2.setHeightForWidth(self.plotsButton.sizePolicy().hasHeightForWidth())
         self.plotsButton.setSizePolicy(sizePolicy2)
-        icon4 = QIcon()
-        icon4.addFile(u":/Icons/iconsWhiteSize40/activity.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.plotsButton.setIcon(icon4)
+        icon3 = QIcon()
+        icon3.addFile(u":/Icons/iconsWhiteSize40/activity.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.plotsButton.setIcon(icon3)
         self.plotsButton.setIconSize(QSize(23, 25))
         self.plotsButton.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
 
@@ -193,9 +180,9 @@ class Ui_MainWindow(object):
         sizePolicy3.setVerticalStretch(0)
         sizePolicy3.setHeightForWidth(self.settingButton.sizePolicy().hasHeightForWidth())
         self.settingButton.setSizePolicy(sizePolicy3)
-        icon5 = QIcon()
-        icon5.addFile(u":/Icons/iconsWhiteSize40/settings.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.settingButton.setIcon(icon5)
+        icon4 = QIcon()
+        icon4.addFile(u":/Icons/iconsWhiteSize40/settings.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.settingButton.setIcon(icon4)
         self.settingButton.setIconSize(QSize(23, 25))
         self.settingButton.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
 
@@ -208,9 +195,9 @@ class Ui_MainWindow(object):
         sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.helpButton.sizePolicy().hasHeightForWidth())
         self.helpButton.setSizePolicy(sizePolicy4)
-        icon6 = QIcon()
-        icon6.addFile(u":/Icons/iconsWhiteSize40/help-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.helpButton.setIcon(icon6)
+        icon5 = QIcon()
+        icon5.addFile(u":/Icons/iconsWhiteSize40/help-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.helpButton.setIcon(icon5)
         self.helpButton.setIconSize(QSize(23, 25))
         self.helpButton.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
 
@@ -240,6 +227,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.fileOutFrame = QFrame(self.headerFrame)
         self.fileOutFrame.setObjectName(u"fileOutFrame")
+        self.fileOutFrame.setMaximumSize(QSize(16777215, 16777215))
         self.fileOutFrame.setFrameShape(QFrame.StyledPanel)
         self.fileOutFrame.setFrameShadow(QFrame.Raised)
 
@@ -269,9 +257,9 @@ class Ui_MainWindow(object):
         self.minimizeButton.setObjectName(u"minimizeButton")
         self.minimizeButton.setMinimumSize(QSize(50, 0))
         self.minimizeButton.setMaximumSize(QSize(50, 16777215))
-        icon7 = QIcon()
-        icon7.addFile(u":/Icons/iconsWhiteSize40/minus.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.minimizeButton.setIcon(icon7)
+        icon6 = QIcon()
+        icon6.addFile(u":/Icons/iconsWhiteSize40/minus.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.minimizeButton.setIcon(icon6)
         self.minimizeButton.setIconSize(QSize(25, 45))
 
         self.horizontalLayout_4.addWidget(self.minimizeButton)
@@ -290,9 +278,9 @@ class Ui_MainWindow(object):
         font1.setPointSize(12)
         font1.setBold(True)
         self.maximizeButton.setFont(font1)
-        icon8 = QIcon()
-        icon8.addFile(u":/Icons/iconsWhiteSize40/maximize.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.maximizeButton.setIcon(icon8)
+        icon7 = QIcon()
+        icon7.addFile(u":/Icons/iconsWhiteSize40/maximize.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.maximizeButton.setIcon(icon7)
         self.maximizeButton.setIconSize(QSize(25, 45))
 
         self.horizontalLayout_4.addWidget(self.maximizeButton)
@@ -304,9 +292,9 @@ class Ui_MainWindow(object):
         font2 = QFont()
         font2.setPointSize(12)
         self.closeButton.setFont(font2)
-        icon9 = QIcon()
-        icon9.addFile(u":/Icons/iconsWhiteSize40/x-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.closeButton.setIcon(icon9)
+        icon8 = QIcon()
+        icon8.addFile(u":/Icons/iconsWhiteSize40/x-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.closeButton.setIcon(icon8)
         self.closeButton.setIconSize(QSize(25, 45))
 
         self.horizontalLayout_4.addWidget(self.closeButton)
@@ -330,6 +318,56 @@ class Ui_MainWindow(object):
         self.gridLayout.setContentsMargins(15, -1, -1, -1)
         self.stackedWidget = QStackedWidget(self.mainBodyFrame)
         self.stackedWidget.setObjectName(u"stackedWidget")
+        self.homePage = QWidget()
+        self.homePage.setObjectName(u"homePage")
+        self.verticalLayout_3 = QVBoxLayout(self.homePage)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.frame_2 = QFrame(self.homePage)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setMaximumSize(QSize(16777215, 94))
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_8 = QVBoxLayout(self.frame_2)
+        self.verticalLayout_8.setSpacing(0)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.Title = QLabel(self.frame_2)
+        self.Title.setObjectName(u"Title")
+        self.Title.setMaximumSize(QSize(16777215, 91))
+        font3 = QFont()
+        font3.setPointSize(28)
+        self.Title.setFont(font3)
+        self.Title.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_8.addWidget(self.Title)
+
+
+        self.verticalLayout_3.addWidget(self.frame_2)
+
+        self.frame = QFrame(self.homePage)
+        self.frame.setObjectName(u"frame")
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_7 = QVBoxLayout(self.frame)
+        self.verticalLayout_7.setSpacing(0)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.Description = QLabel(self.frame)
+        self.Description.setObjectName(u"Description")
+        self.Description.setMaximumSize(QSize(16777215, 100))
+        font4 = QFont()
+        font4.setPointSize(16)
+        self.Description.setFont(font4)
+        self.Description.setTextFormat(Qt.RichText)
+        self.Description.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.Description.setWordWrap(True)
+
+        self.verticalLayout_7.addWidget(self.Description)
+
+
+        self.verticalLayout_3.addWidget(self.frame, 0, Qt.AlignTop)
+
+        self.stackedWidget.addWidget(self.homePage)
         self.launchPage = QWidget()
         self.launchPage.setObjectName(u"launchPage")
         self.launchPage.setStyleSheet(u"QLineEdit{\n"
@@ -344,7 +382,7 @@ class Ui_MainWindow(object):
         self.launchHeader.setFrameShape(QFrame.StyledPanel)
         self.launchHeader.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_6 = QHBoxLayout(self.launchHeader)
-        self.horizontalLayout_6.setSpacing(27)
+        self.horizontalLayout_6.setSpacing(6)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.mediumLabelFrame = QFrame(self.launchHeader)
@@ -359,10 +397,10 @@ class Ui_MainWindow(object):
         self.label_23 = QLabel(self.mediumLabelFrame)
         self.label_23.setObjectName(u"label_23")
         self.label_23.setMaximumSize(QSize(150, 16777215))
-        font3 = QFont()
-        font3.setPointSize(11)
-        font3.setBold(True)
-        self.label_23.setFont(font3)
+        font5 = QFont()
+        font5.setPointSize(11)
+        font5.setBold(True)
+        self.label_23.setFont(font5)
 
         self.horizontalLayout_18.addWidget(self.label_23, 0, Qt.AlignHCenter)
 
@@ -376,14 +414,14 @@ class Ui_MainWindow(object):
         self.inputHeader.setFrameShape(QFrame.StyledPanel)
         self.inputHeader.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_8 = QHBoxLayout(self.inputHeader)
-        self.horizontalLayout_8.setSpacing(15)
+        self.horizontalLayout_8.setSpacing(10)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
         self.dragButton = QRadioButton(self.inputHeader)
         self.dragButton.setObjectName(u"dragButton")
         self.dragButton.setMaximumSize(QSize(72, 16777215))
-        font4 = QFont()
-        font4.setPointSize(10)
-        self.dragButton.setFont(font4)
+        font6 = QFont()
+        font6.setPointSize(10)
+        self.dragButton.setFont(font6)
 
         self.horizontalLayout_8.addWidget(self.dragButton)
 
@@ -395,7 +433,7 @@ class Ui_MainWindow(object):
         sizePolicy6.setHeightForWidth(self.vacButton.sizePolicy().hasHeightForWidth())
         self.vacButton.setSizePolicy(sizePolicy6)
         self.vacButton.setMaximumSize(QSize(83, 16777215))
-        self.vacButton.setFont(font4)
+        self.vacButton.setFont(font6)
 
         self.horizontalLayout_8.addWidget(self.vacButton)
 
@@ -412,7 +450,7 @@ class Ui_MainWindow(object):
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_17 = QHBoxLayout(self.frame_3)
-        self.horizontalLayout_17.setSpacing(7)
+        self.horizontalLayout_17.setSpacing(8)
         self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
         self.horizontalLayout_17.setContentsMargins(0, 0, 0, 0)
         self.frame_35 = QFrame(self.frame_3)
@@ -424,7 +462,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_35.setContentsMargins(0, 0, 0, 0)
         self.label_20 = QLabel(self.frame_35)
         self.label_20.setObjectName(u"label_20")
-        self.label_20.setFont(font3)
+        self.label_20.setFont(font5)
 
         self.verticalLayout_35.addWidget(self.label_20)
 
@@ -440,7 +478,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_36.setContentsMargins(0, 0, 0, 0)
         self.typeLabel = QLabel(self.frame_36)
         self.typeLabel.setObjectName(u"typeLabel")
-        self.typeLabel.setFont(font3)
+        self.typeLabel.setFont(font5)
         self.typeLabel.setStyleSheet(u"border-bottom : 2px solid white;\n"
 "")
         self.typeLabel.setAlignment(Qt.AlignCenter)
@@ -457,7 +495,7 @@ class Ui_MainWindow(object):
         self.displayHeader.setObjectName(u"displayHeader")
         sizePolicy2.setHeightForWidth(self.displayHeader.sizePolicy().hasHeightForWidth())
         self.displayHeader.setSizePolicy(sizePolicy2)
-        self.displayHeader.setMinimumSize(QSize(408, 0))
+        self.displayHeader.setMinimumSize(QSize(360, 0))
         self.displayHeader.setMaximumSize(QSize(16777215, 16777215))
         self.displayHeader.setStyleSheet(u"QPushButton{\n"
 "	border-radius: 12px;\n"
@@ -466,7 +504,9 @@ class Ui_MainWindow(object):
         self.displayHeader.setFrameShape(QFrame.StyledPanel)
         self.displayHeader.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.displayHeader)
+        self.horizontalLayout_9.setSpacing(0)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalLayout_9.setContentsMargins(0, 4, 0, 4)
         self.saveDataButton_3 = QPushButton(self.displayHeader)
         self.saveDataButton_3.setObjectName(u"saveDataButton_3")
         sizePolicy7 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Expanding)
@@ -476,10 +516,10 @@ class Ui_MainWindow(object):
         self.saveDataButton_3.setSizePolicy(sizePolicy7)
         self.saveDataButton_3.setMinimumSize(QSize(85, 25))
         self.saveDataButton_3.setMaximumSize(QSize(85, 100))
-        font5 = QFont()
-        font5.setPointSize(10)
-        font5.setBold(True)
-        self.saveDataButton_3.setFont(font5)
+        font7 = QFont()
+        font7.setPointSize(10)
+        font7.setBold(True)
+        self.saveDataButton_3.setFont(font7)
 
         self.horizontalLayout_9.addWidget(self.saveDataButton_3)
 
@@ -489,7 +529,7 @@ class Ui_MainWindow(object):
         self.saveDataButton_2.setSizePolicy(sizePolicy7)
         self.saveDataButton_2.setMinimumSize(QSize(85, 25))
         self.saveDataButton_2.setMaximumSize(QSize(85, 100))
-        self.saveDataButton_2.setFont(font5)
+        self.saveDataButton_2.setFont(font7)
 
         self.horizontalLayout_9.addWidget(self.saveDataButton_2)
 
@@ -499,19 +539,9 @@ class Ui_MainWindow(object):
         self.saveDataButton.setSizePolicy(sizePolicy7)
         self.saveDataButton.setMinimumSize(QSize(85, 25))
         self.saveDataButton.setMaximumSize(QSize(85, 100))
-        self.saveDataButton.setFont(font5)
+        self.saveDataButton.setFont(font7)
 
         self.horizontalLayout_9.addWidget(self.saveDataButton)
-
-        self.saveAnimButton = QPushButton(self.displayHeader)
-        self.saveAnimButton.setObjectName(u"saveAnimButton")
-        sizePolicy7.setHeightForWidth(self.saveAnimButton.sizePolicy().hasHeightForWidth())
-        self.saveAnimButton.setSizePolicy(sizePolicy7)
-        self.saveAnimButton.setMinimumSize(QSize(98, 25))
-        self.saveAnimButton.setMaximumSize(QSize(101, 100))
-        self.saveAnimButton.setFont(font5)
-
-        self.horizontalLayout_9.addWidget(self.saveAnimButton)
 
 
         self.horizontalLayout_6.addWidget(self.displayHeader)
@@ -606,21 +636,21 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.setContentsMargins(15, 4, 15, 9)
         self.label_4 = QLabel(self.frame_16)
         self.label_4.setObjectName(u"label_4")
-        self.label_4.setFont(font3)
+        self.label_4.setFont(font5)
         self.label_4.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_17.addWidget(self.label_4)
 
         self.label_5 = QLabel(self.frame_16)
         self.label_5.setObjectName(u"label_5")
-        self.label_5.setFont(font3)
+        self.label_5.setFont(font5)
         self.label_5.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_17.addWidget(self.label_5)
 
         self.label_6 = QLabel(self.frame_16)
         self.label_6.setObjectName(u"label_6")
-        self.label_6.setFont(font3)
+        self.label_6.setFont(font5)
         self.label_6.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_17.addWidget(self.label_6)
@@ -629,7 +659,7 @@ class Ui_MainWindow(object):
         self.label_7.setObjectName(u"label_7")
         self.label_7.setMinimumSize(QSize(0, 0))
         self.label_7.setMaximumSize(QSize(16777215, 16777215))
-        self.label_7.setFont(font3)
+        self.label_7.setFont(font5)
         self.label_7.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_17.addWidget(self.label_7)
@@ -731,7 +761,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.setContentsMargins(-1, 2, 0, 0)
         self.label_8 = QLabel(self.frame_12)
         self.label_8.setObjectName(u"label_8")
-        self.label_8.setFont(font3)
+        self.label_8.setFont(font5)
 
         self.verticalLayout_19.addWidget(self.label_8, 0, Qt.AlignHCenter)
 
@@ -761,13 +791,13 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.label_9.sizePolicy().hasHeightForWidth())
         self.label_9.setSizePolicy(sizePolicy1)
         self.label_9.setMaximumSize(QSize(16777215, 16777215))
-        self.label_9.setFont(font3)
+        self.label_9.setFont(font5)
 
         self.verticalLayout_21.addWidget(self.label_9, 0, Qt.AlignRight)
 
         self.label_10 = QLabel(self.frame_18)
         self.label_10.setObjectName(u"label_10")
-        self.label_10.setFont(font3)
+        self.label_10.setFont(font5)
 
         self.verticalLayout_21.addWidget(self.label_10)
 
@@ -793,9 +823,9 @@ class Ui_MainWindow(object):
         self.stepAngleCounter = QLabel(self.frame_20)
         self.stepAngleCounter.setObjectName(u"stepAngleCounter")
         self.stepAngleCounter.setMaximumSize(QSize(16777215, 15))
-        font6 = QFont()
-        font6.setPointSize(11)
-        self.stepAngleCounter.setFont(font6)
+        font8 = QFont()
+        font8.setPointSize(11)
+        self.stepAngleCounter.setFont(font8)
 
         self.verticalLayout_23.addWidget(self.stepAngleCounter, 0, Qt.AlignHCenter)
 
@@ -803,7 +833,7 @@ class Ui_MainWindow(object):
         self.stepAngleSlider.setObjectName(u"stepAngleSlider")
         self.stepAngleSlider.setMaximumSize(QSize(80, 15))
         self.stepAngleSlider.setMinimum(0)
-        self.stepAngleSlider.setMaximum(20)
+        self.stepAngleSlider.setMaximum(50)
         self.stepAngleSlider.setSingleStep(1)
         self.stepAngleSlider.setOrientation(Qt.Horizontal)
         self.stepAngleSlider.setTickPosition(QSlider.NoTicks)
@@ -841,7 +871,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
         self.label_11 = QLabel(self.frame_14)
         self.label_11.setObjectName(u"label_11")
-        self.label_11.setFont(font3)
+        self.label_11.setFont(font5)
 
         self.verticalLayout_20.addWidget(self.label_11, 0, Qt.AlignHCenter)
 
@@ -867,13 +897,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_24.setContentsMargins(24, 27, 5, 34)
         self.label_13 = QLabel(self.frame_21)
         self.label_13.setObjectName(u"label_13")
-        self.label_13.setFont(font3)
+        self.label_13.setFont(font5)
 
         self.verticalLayout_24.addWidget(self.label_13, 0, Qt.AlignRight)
 
         self.label_14 = QLabel(self.frame_21)
         self.label_14.setObjectName(u"label_14")
-        self.label_14.setFont(font3)
+        self.label_14.setFont(font5)
 
         self.verticalLayout_24.addWidget(self.label_14)
 
@@ -963,15 +993,16 @@ class Ui_MainWindow(object):
         self.verticalLayout_26.setContentsMargins(0, 0, 0, 0)
         self.label_12 = QLabel(self.frame_23)
         self.label_12.setObjectName(u"label_12")
-        self.label_12.setFont(font3)
-        self.label_12.setAlignment(Qt.AlignCenter)
+        self.label_12.setMinimumSize(QSize(159, 0))
+        self.label_12.setFont(font5)
+        self.label_12.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.verticalLayout_26.addWidget(self.label_12, 0, Qt.AlignRight)
 
         self.label_15 = QLabel(self.frame_23)
         self.label_15.setObjectName(u"label_15")
         self.label_15.setMaximumSize(QSize(165, 16777215))
-        self.label_15.setFont(font3)
+        self.label_15.setFont(font5)
         self.label_15.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_26.addWidget(self.label_15, 0, Qt.AlignLeft)
@@ -1013,7 +1044,7 @@ class Ui_MainWindow(object):
         self.frame_26.setFrameShape(QFrame.StyledPanel)
         self.frame_26.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_15 = QHBoxLayout(self.frame_26)
-        self.horizontalLayout_15.setSpacing(0)
+        self.horizontalLayout_15.setSpacing(51)
         self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
         self.horizontalLayout_15.setContentsMargins(0, 0, 0, 0)
         self.frame_27 = QFrame(self.frame_26)
@@ -1026,7 +1057,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_28.setContentsMargins(0, 0, 0, 0)
         self.label_18 = QLabel(self.frame_27)
         self.label_18.setObjectName(u"label_18")
-        self.label_18.setFont(font3)
+        self.label_18.setFont(font5)
         self.label_18.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_28.addWidget(self.label_18, 0, Qt.AlignRight)
@@ -1081,11 +1112,17 @@ class Ui_MainWindow(object):
         self.frame_29.setMaximumSize(QSize(16777215, 16777215))
         self.frame_29.setFrameShape(QFrame.StyledPanel)
         self.frame_29.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_16 = QHBoxLayout(self.frame_29)
-        self.horizontalLayout_16.setSpacing(0)
+        self.verticalLayout_15 = QVBoxLayout(self.frame_29)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.frame_34 = QFrame(self.frame_29)
+        self.frame_34.setObjectName(u"frame_34")
+        self.frame_34.setFrameShape(QFrame.StyledPanel)
+        self.frame_34.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_16 = QHBoxLayout(self.frame_34)
+        self.horizontalLayout_16.setSpacing(51)
         self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
-        self.horizontalLayout_16.setContentsMargins(0, 0, 4, 44)
-        self.frame_30 = QFrame(self.frame_29)
+        self.horizontalLayout_16.setContentsMargins(0, 0, 0, 0)
+        self.frame_30 = QFrame(self.frame_34)
         self.frame_30.setObjectName(u"frame_30")
         self.frame_30.setMaximumSize(QSize(16777215, 16777215))
         self.frame_30.setFrameShape(QFrame.StyledPanel)
@@ -1099,14 +1136,14 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.label_19.sizePolicy().hasHeightForWidth())
         self.label_19.setSizePolicy(sizePolicy1)
         self.label_19.setMaximumSize(QSize(16777215, 16777215))
-        self.label_19.setFont(font3)
+        self.label_19.setFont(font5)
 
-        self.verticalLayout_30.addWidget(self.label_19, 0, Qt.AlignRight)
+        self.verticalLayout_30.addWidget(self.label_19)
 
 
-        self.horizontalLayout_16.addWidget(self.frame_30, 0, Qt.AlignRight)
+        self.horizontalLayout_16.addWidget(self.frame_30)
 
-        self.frame_31 = QFrame(self.frame_29)
+        self.frame_31 = QFrame(self.frame_34)
         self.frame_31.setObjectName(u"frame_31")
         self.frame_31.setFrameShape(QFrame.StyledPanel)
         self.frame_31.setFrameShadow(QFrame.Raised)
@@ -1125,15 +1162,15 @@ class Ui_MainWindow(object):
         self.timeStepCounter = QLabel(self.frame_32)
         self.timeStepCounter.setObjectName(u"timeStepCounter")
         self.timeStepCounter.setMaximumSize(QSize(16777215, 15))
-        self.timeStepCounter.setFont(font6)
+        self.timeStepCounter.setFont(font8)
 
         self.verticalLayout_32.addWidget(self.timeStepCounter, 0, Qt.AlignHCenter)
 
         self.timeStepSlider = QSlider(self.frame_32)
         self.timeStepSlider.setObjectName(u"timeStepSlider")
         self.timeStepSlider.setMaximumSize(QSize(80, 15))
-        self.timeStepSlider.setMinimum(10)
-        self.timeStepSlider.setMaximum(200)
+        self.timeStepSlider.setMinimum(1)
+        self.timeStepSlider.setMaximum(100)
         self.timeStepSlider.setOrientation(Qt.Horizontal)
         self.timeStepSlider.setTickPosition(QSlider.NoTicks)
         self.timeStepSlider.setTickInterval(1)
@@ -1144,7 +1181,56 @@ class Ui_MainWindow(object):
         self.verticalLayout_31.addWidget(self.frame_32)
 
 
-        self.horizontalLayout_16.addWidget(self.frame_31, 0, Qt.AlignHCenter)
+        self.horizontalLayout_16.addWidget(self.frame_31)
+
+
+        self.verticalLayout_15.addWidget(self.frame_34)
+
+        self.frame_38 = QFrame(self.frame_29)
+        self.frame_38.setObjectName(u"frame_38")
+        self.frame_38.setMaximumSize(QSize(300, 16777215))
+        self.frame_38.setFrameShape(QFrame.StyledPanel)
+        self.frame_38.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_20 = QHBoxLayout(self.frame_38)
+        self.horizontalLayout_20.setSpacing(0)
+        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
+        self.horizontalLayout_20.setContentsMargins(45, 0, 0, 16)
+        self.realTimeCheckBox = QCheckBox(self.frame_38)
+        self.realTimeCheckBox.setObjectName(u"realTimeCheckBox")
+
+        self.horizontalLayout_20.addWidget(self.realTimeCheckBox)
+
+        self.fastCheckBox = QCheckBox(self.frame_38)
+        self.fastCheckBox.setObjectName(u"fastCheckBox")
+
+        self.horizontalLayout_20.addWidget(self.fastCheckBox)
+
+
+        self.verticalLayout_15.addWidget(self.frame_38)
+
+        self.frame_37 = QFrame(self.frame_29)
+        self.frame_37.setObjectName(u"frame_37")
+        self.frame_37.setMinimumSize(QSize(154, 0))
+        self.frame_37.setFrameShape(QFrame.StyledPanel)
+        self.frame_37.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_34 = QVBoxLayout(self.frame_37)
+        self.verticalLayout_34.setSpacing(0)
+        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
+        self.verticalLayout_34.setContentsMargins(0, 13, 0, 0)
+        self.launchButton = QPushButton(self.frame_37)
+        self.launchButton.setObjectName(u"launchButton")
+        sizePolicy1.setHeightForWidth(self.launchButton.sizePolicy().hasHeightForWidth())
+        self.launchButton.setSizePolicy(sizePolicy1)
+        self.launchButton.setMinimumSize(QSize(150, 35))
+        self.launchButton.setMaximumSize(QSize(150, 35))
+        self.launchButton.setFont(font1)
+        self.launchButton.setStyleSheet(u"background-color: rgb(150, 0, 0);\n"
+"border-radius:15px;")
+
+        self.verticalLayout_34.addWidget(self.launchButton)
+
+
+        self.verticalLayout_15.addWidget(self.frame_37, 0, Qt.AlignHCenter)
 
 
         self.verticalLayout_33.addWidget(self.frame_29)
@@ -1167,38 +1253,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_10.setSpacing(0)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.frame_34 = QFrame(self.launchDisplay)
-        self.frame_34.setObjectName(u"frame_34")
-        sizePolicy8.setHeightForWidth(self.frame_34.sizePolicy().hasHeightForWidth())
-        self.frame_34.setSizePolicy(sizePolicy8)
-        self.frame_34.setStyleSheet(u"")
-        self.frame_34.setFrameShape(QFrame.StyledPanel)
-        self.frame_34.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_34 = QVBoxLayout(self.frame_34)
-        self.verticalLayout_34.setSpacing(0)
-        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
-        self.verticalLayout_34.setContentsMargins(0, 0, 0, 0)
-        self.displayLabel = QLabel(self.frame_34)
-        self.displayLabel.setObjectName(u"displayLabel")
-        sizePolicy10 = QSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
-        sizePolicy10.setHorizontalStretch(0)
-        sizePolicy10.setVerticalStretch(0)
-        sizePolicy10.setHeightForWidth(self.displayLabel.sizePolicy().hasHeightForWidth())
-        self.displayLabel.setSizePolicy(sizePolicy10)
-        self.displayLabel.setMinimumSize(QSize(7, 32))
-        font7 = QFont()
-        font7.setPointSize(16)
-        font7.setBold(True)
-        self.displayLabel.setFont(font7)
-        self.displayLabel.setStyleSheet(u"border:1px solid white;\n"
-"")
-        self.displayLabel.setScaledContents(True)
-        self.displayLabel.setAlignment(Qt.AlignCenter)
+        self.statsFrame = QFrame(self.launchDisplay)
+        self.statsFrame.setObjectName(u"statsFrame")
+        sizePolicy8.setHeightForWidth(self.statsFrame.sizePolicy().hasHeightForWidth())
+        self.statsFrame.setSizePolicy(sizePolicy8)
+        self.statsFrame.setStyleSheet(u"")
+        self.statsFrame.setFrameShape(QFrame.StyledPanel)
+        self.statsFrame.setFrameShadow(QFrame.Raised)
 
-        self.verticalLayout_34.addWidget(self.displayLabel)
-
-
-        self.verticalLayout_10.addWidget(self.frame_34)
+        self.verticalLayout_10.addWidget(self.statsFrame)
 
         self.frame_4 = QFrame(self.launchDisplay)
         self.frame_4.setObjectName(u"frame_4")
@@ -1212,33 +1275,33 @@ class Ui_MainWindow(object):
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_19 = QHBoxLayout(self.frame_4)
         self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
+        self.launchButton_4 = QPushButton(self.frame_4)
+        self.launchButton_4.setObjectName(u"launchButton_4")
+        sizePolicy1.setHeightForWidth(self.launchButton_4.sizePolicy().hasHeightForWidth())
+        self.launchButton_4.setSizePolicy(sizePolicy1)
+        self.launchButton_4.setMinimumSize(QSize(100, 35))
+        self.launchButton_4.setMaximumSize(QSize(100, 35))
+        self.launchButton_4.setFont(font5)
+
+        self.horizontalLayout_19.addWidget(self.launchButton_4)
+
         self.launchButton_2 = QPushButton(self.frame_4)
         self.launchButton_2.setObjectName(u"launchButton_2")
         sizePolicy1.setHeightForWidth(self.launchButton_2.sizePolicy().hasHeightForWidth())
         self.launchButton_2.setSizePolicy(sizePolicy1)
         self.launchButton_2.setMinimumSize(QSize(100, 35))
         self.launchButton_2.setMaximumSize(QSize(100, 35))
-        self.launchButton_2.setFont(font3)
+        self.launchButton_2.setFont(font5)
 
         self.horizontalLayout_19.addWidget(self.launchButton_2)
-
-        self.launchButton = QPushButton(self.frame_4)
-        self.launchButton.setObjectName(u"launchButton")
-        sizePolicy1.setHeightForWidth(self.launchButton.sizePolicy().hasHeightForWidth())
-        self.launchButton.setSizePolicy(sizePolicy1)
-        self.launchButton.setMinimumSize(QSize(150, 35))
-        self.launchButton.setMaximumSize(QSize(150, 35))
-        self.launchButton.setFont(font1)
-
-        self.horizontalLayout_19.addWidget(self.launchButton)
 
         self.launchButton_3 = QPushButton(self.frame_4)
         self.launchButton_3.setObjectName(u"launchButton_3")
         sizePolicy1.setHeightForWidth(self.launchButton_3.sizePolicy().hasHeightForWidth())
         self.launchButton_3.setSizePolicy(sizePolicy1)
-        self.launchButton_3.setMinimumSize(QSize(100, 35))
-        self.launchButton_3.setMaximumSize(QSize(100, 35))
-        self.launchButton_3.setFont(font3)
+        self.launchButton_3.setMinimumSize(QSize(140, 35))
+        self.launchButton_3.setMaximumSize(QSize(140, 35))
+        self.launchButton_3.setFont(font5)
 
         self.horizontalLayout_19.addWidget(self.launchButton_3)
 
@@ -1252,62 +1315,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.launchBody)
 
         self.stackedWidget.addWidget(self.launchPage)
-        self.statsPage = QWidget()
-        self.statsPage.setObjectName(u"statsPage")
-        self.stackedWidget.addWidget(self.statsPage)
         self.plotsPage = QWidget()
         self.plotsPage.setObjectName(u"plotsPage")
         self.stackedWidget.addWidget(self.plotsPage)
-        self.homePage = QWidget()
-        self.homePage.setObjectName(u"homePage")
-        self.verticalLayout_3 = QVBoxLayout(self.homePage)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.frame_2 = QFrame(self.homePage)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setMaximumSize(QSize(16777215, 94))
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_8 = QVBoxLayout(self.frame_2)
-        self.verticalLayout_8.setSpacing(0)
-        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.Title = QLabel(self.frame_2)
-        self.Title.setObjectName(u"Title")
-        self.Title.setMaximumSize(QSize(16777215, 91))
-        font8 = QFont()
-        font8.setPointSize(28)
-        self.Title.setFont(font8)
-        self.Title.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_8.addWidget(self.Title)
-
-
-        self.verticalLayout_3.addWidget(self.frame_2)
-
-        self.frame = QFrame(self.homePage)
-        self.frame.setObjectName(u"frame")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_7 = QVBoxLayout(self.frame)
-        self.verticalLayout_7.setSpacing(0)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.Description = QLabel(self.frame)
-        self.Description.setObjectName(u"Description")
-        self.Description.setMaximumSize(QSize(16777215, 100))
-        font9 = QFont()
-        font9.setPointSize(16)
-        self.Description.setFont(font9)
-        self.Description.setTextFormat(Qt.RichText)
-        self.Description.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
-        self.Description.setWordWrap(True)
-
-        self.verticalLayout_7.addWidget(self.Description)
-
-
-        self.verticalLayout_3.addWidget(self.frame, 0, Qt.AlignTop)
-
-        self.stackedWidget.addWidget(self.homePage)
 
         self.gridLayout.addWidget(self.stackedWidget, 0, 0, 1, 1)
 
@@ -1365,7 +1375,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1383,13 +1393,6 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.launchMenuButton.setText(QCoreApplication.translate("MainWindow", u" Launch", None))
 #if QT_CONFIG(tooltip)
-        self.statsButton.setToolTip(QCoreApplication.translate("MainWindow", u"Trajectory Statistics", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(statustip)
-        self.statsButton.setStatusTip("")
-#endif // QT_CONFIG(statustip)
-        self.statsButton.setText(QCoreApplication.translate("MainWindow", u" Stats", None))
-#if QT_CONFIG(tooltip)
         self.plotsButton.setToolTip(QCoreApplication.translate("MainWindow", u"Trajectory Plots", None))
 #endif // QT_CONFIG(tooltip)
         self.plotsButton.setText(QCoreApplication.translate("MainWindow", u" Plots", None))
@@ -1404,6 +1407,8 @@ class Ui_MainWindow(object):
         self.minimizeButton.setText("")
         self.maximizeButton.setText("")
         self.closeButton.setText("")
+        self.Title.setText(QCoreApplication.translate("MainWindow", u"Projectile Motion Physics Simulator", None))
+        self.Description.setText(QCoreApplication.translate("MainWindow", u"Description Goes Here. Introduce some projectile motion physics, equations used, conditions available dsfg sdfg sdfg sf g ", None))
         self.label_23.setText(QCoreApplication.translate("MainWindow", u"Select Medium: ", None))
         self.dragButton.setText(QCoreApplication.translate("MainWindow", u"Air", None))
         self.vacButton.setText(QCoreApplication.translate("MainWindow", u"Vaccum", None))
@@ -1413,7 +1418,6 @@ class Ui_MainWindow(object):
         self.saveDataButton_3.setText(QCoreApplication.translate("MainWindow", u"Save Inputs", None))
         self.saveDataButton_2.setText(QCoreApplication.translate("MainWindow", u"Load Inputs", None))
         self.saveDataButton.setText(QCoreApplication.translate("MainWindow", u"Save Data", None))
-        self.saveAnimButton.setText(QCoreApplication.translate("MainWindow", u"Save Animation", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Initial Conditions", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"x0:", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"y0:", None))
@@ -1430,18 +1434,18 @@ class Ui_MainWindow(object):
         self.label_16.setText(QCoreApplication.translate("MainWindow", u"Drag Conditions", None))
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"Drag Coefficient:", None))
         self.label_15.setText(QCoreApplication.translate("MainWindow", u"Sea Level Temperature:\n"
-"(height variance)", None))
+"(Air density variance)", None))
         self.label_18.setText(QCoreApplication.translate("MainWindow", u"Wind Velocity:", None))
         self.label_21.setText(QCoreApplication.translate("MainWindow", u"Simulation Inputs", None))
         self.label_19.setText(QCoreApplication.translate("MainWindow", u"Time Step:\n"
 "(seconds)", None))
-        self.timeStepCounter.setText(QCoreApplication.translate("MainWindow", u"0.1", None))
-        self.displayLabel.setText(QCoreApplication.translate("MainWindow", u"DISPLAY", None))
-        self.launchButton_2.setText(QCoreApplication.translate("MainWindow", u"Plots", None))
+        self.timeStepCounter.setText(QCoreApplication.translate("MainWindow", u"0.01", None))
+        self.realTimeCheckBox.setText(QCoreApplication.translate("MainWindow", u"Real Time", None))
+        self.fastCheckBox.setText(QCoreApplication.translate("MainWindow", u"Fast", None))
         self.launchButton.setText(QCoreApplication.translate("MainWindow", u"LAUNCH", None))
-        self.launchButton_3.setText(QCoreApplication.translate("MainWindow", u"Stats", None))
-        self.Title.setText(QCoreApplication.translate("MainWindow", u"Projectile Motion Physics Simulator", None))
-        self.Description.setText(QCoreApplication.translate("MainWindow", u"Description Goes Here. Introduce some projectile motion physics, equations used, conditions available dsfg sdfg sdfg sf g ", None))
+        self.launchButton_4.setText(QCoreApplication.translate("MainWindow", u"Reset Inputs", None))
+        self.launchButton_2.setText(QCoreApplication.translate("MainWindow", u"Plots", None))
+        self.launchButton_3.setText(QCoreApplication.translate("MainWindow", u"Show Animation", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Github", None))
     # retranslateUi
 

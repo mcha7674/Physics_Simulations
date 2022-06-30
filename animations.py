@@ -1,4 +1,5 @@
 from matplotlib import pyplot as plt
+from numpy import block
 import pandas as pd
 from matplotlib.animation import PillowWriter
 from matplotlib.animation import FuncAnimation
@@ -10,7 +11,7 @@ Writing a class that animates a plot as a gif
 Creates x vs y animation for a singular trajectory
 """
 class Animation():
-    def __init__(self,dataPath, figSize = (8,7), color = "black",isComparing = False,isMulti=False):
+    def __init__(self,dataPath, figSize = (10,6), color = "black",isComparing = False,isMulti=False, realTime = False):
         self.df = pd.read_csv(dataPath)
         print("INIT DATASIZE: ", len(self.df["x"]))
         self.dataPath = dataPath
@@ -21,18 +22,12 @@ class Animation():
         # initializ fig, axis,and empty plot
         self.fig,self.ax = plt.subplots(figsize=figSize)        
         # for efficiency in the animation
-        if (len(self.df) > 500):
-            self.sliceNum = int(math.ceil(len(self.df)/500))
-            print("SLICENUM: ",self.sliceNum)
-            self._slice(self.sliceNum)
         self._setGraphLimits()
         # initiate empty plot array and dataframes array
         self.dataFrames = []
         self.curves = []
         if isComparing:
             self._initComparePlots()
-            for df in self.dataFrames:
-                self._determineSlice(df)
             self.curve1, = self.ax.plot([],[],c = "blue",label="Air")
             self.curve2, = self.ax.plot([],[],c = "black", label="Vaccum")
             self.curve3, = self.ax.plot([],[],c = "orange",label="Adiabatic")
@@ -42,26 +37,22 @@ class Animation():
         elif isMulti:
             self._initMultiPlots()
             for i,df in enumerate(self.dataFrames):
-                self._determineSlice(df)
                 degree_sign= u'\N{DEGREE SIGN}'
                 self.label = str(int(df["angle"][0])) + degree_sign
                 self.curve, = self.ax.plot([],[],label = str(self.label))
                 self.curves.append(self.curve)
         else:
             self.dataFrames.append(self.df)
-            self._determineSlice(self.dataFrames[0])
             self.curve, = self.ax.plot([],[],c = "black")
             self.curves.append(self.curve)
         # Time of Flight - adjusted
         self.t = self.df["t"]
-        self.dt = self.t[1] - self.t[0] 
-        # calc fps
-        self.fps = int(1/self.dt) # Get accurate fps to simulate real time trajectory
-        if self.fps == 0:self.fps = 1
-        fps = 15
-        print("FPS calc: ",self.fps)
-        #if self.fps <10:self.fps+=5 
-        #print("FPS adjusted: ",self.fps)     
+        self.dt = self.t[1] - self.t[0]
+        # calc correct interval.
+        if (realTime):
+            self.interval = self.dt * 1000 # since interval is in ms
+        else: self.interval = 1
+        print('Interval: ', self.interval," seconds")
     
     def _initMultiPlots(self):
         if self.isMulti:
@@ -82,24 +73,6 @@ class Animation():
             self.dataFrames.append(self.df1)
             self.dataFrames.append(self.df2)
             self.dataFrames.append(self.df3)
-
-    def _slice(self,sliceNum):
-        print("SLICE: ",sliceNum)
-        self.df = self.df.iloc[::sliceNum]
-        self.df.reset_index(inplace=True)
-        print("POST DATA SIZE: ", len(self.df["x"]))
-
-    def _determineSlice(self,df):
-        size = len(df["x"])
-        print("PRE DATA SIZE: ", size)         
-        threshold = 200
-        if (size > threshold):
-            slice =  int(math.ceil((size/(threshold))))
-            df = df.iloc[::slice]
-            print("POST DATA SIZE: ", len(df["x"]))
-            print("SLICE: ", slice)
-            # add back in the last value
-            df.reset_index(inplace=True)
 
     def _setGraphLimits(self):
         self.x = self.df["x"]
@@ -124,22 +97,26 @@ class Animation():
             self.ax.legend()
         self.fig.tight_layout()
 
-    def createAnimation(self,interval):
-        self.animation = FuncAnimation(self.fig,func=self._animate,interval = interval,
-            frames=len(self.df["x"]),repeat=False,blit=True)        
+    def createAnimation(self):
+        self.animation = FuncAnimation(self.fig,func=self._animate,interval = self.interval,
+            frames=len(self.df["x"]),repeat=False,blit=False)        
 
     def saveAnimation(self,gifPath = 'Plots/graph.gif',dpi = 300):
         self.animation.save(gifPath,writer='pillow',fps=self.fps)
 
-    def showPlot(self):
-        plt.show()
+    def showPlot(self,Block=False):
+        plt.show(block = Block)
+    
+    def closePlot(self):
+        plt.close()
 
-ani = Animation("Data/trajData2.csv",figSize=(6,5),isComparing=False,isMulti=True)
-ani.decorateGraph(title = "Trajectories in real time", xLabel="X (meters)",
-yLabel= "Y (meters)",setLegend=True)
-ani.createAnimation(interval=1)
-#ani.showPlot()
-ani.saveAnimation()
+# ani = Animation("Data/comparisons.csv",figSize=(9,6),isComparing=True,isMulti=False,realTime=False)
+# ani.decorateGraph(title = "Trajectories in real time", xLabel="X (meters)",
+# yLabel= "Y (meters)",setLegend=True)
+# ani.createAnimation()
+# ani.showPlot()
+# ani.closePlot()
+# ani.saveAnimation()
 
 
   

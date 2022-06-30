@@ -10,7 +10,7 @@ import animations
 Contains all code and handling for gui interface
 """
 class MainWindow(QMainWindow):
-    pages = {"home":3,"launch":0,"stats":1,"plots":2}
+    pages = {"home":0,"launch":1,"plots":2}
     def __init__(self):
         super().__init__()  # grab inherited constructor
         self.ui = Ui_MainWindow()
@@ -38,10 +38,9 @@ class MainWindow(QMainWindow):
         # First Set the start up page:
         self.ui.stackedWidget.setCurrentIndex(MainWindow.pages["home"])
         # Integrate Menu buttons here
-        self.ui.homeButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(3))
-        self.ui.launchMenuButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(0))
+        self.ui.homeButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(0))
+        self.ui.launchMenuButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(1))
         self.ui.plotsButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(2))
-        self.ui.statsButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(1))
         ###### Grab Inputs ######
         self.inputs = \
         {   # value is in  [inputObject, value]
@@ -201,17 +200,14 @@ class MainWindow(QMainWindow):
         ani = animations.Animation(self.dataPath,figSize=(6,5),isComparing=self.isCompare,isMulti=self.isMulti)
         ani.decorateGraph(title = "Trajectory", xLabel="X (meters)",
         yLabel= "Y (meters)",setLegend=self.legend)
-        ani.createAnimation(interval=1)
-        ani.saveAnimation()
+        ani.createAnimation()
+        ani.showPlot(Block = False)
 
     def _updateDisplay(self):  
         # Animation
         # display the animation
         self._createAnimation()
         # initialize gif
-        self.movie = QMovie("Plots/graph.gif")
-        self.ui.displayLabel.setMovie(self.movie)
-        self.movie.start()
 
     def _updateTrajType(self):
         if self.inputs["compareToggle"][1]:
@@ -235,7 +231,7 @@ class MainWindow(QMainWindow):
     def checkLineValue(self,key):
         """
         check for non numerical or negative values. If true,
-        then highlight lineEdit red and clear text
+        then highlight lineEdit red and clear text.
         """
         error = False
         lineEdit = self.inputs[key][0]

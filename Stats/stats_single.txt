@@ -2696,3 +2696,41 @@ Chosen Angle: 45
 TIME STAMP: 2022-06-29 13:55:02
 ====================================
 
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 51.5961 meters
+Range: 206.506 meters
+flightTime: 6.5 seconds
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 45
+Chosen Angle: 45
+
+TIME STAMP: 2022-07-01 08:49:32
+====================================
+
+==========TRAJECTORY STATS==========
+Adiabatic: false
+Drag: false
+maxH: 25484.2 meters
+Range: 101937 meters
+flightTime: 144.2 seconds
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 1000
+Chosen Angle: 45
+
+TIME STAMP: 2022-07-01 08:49:53
+====================================
+

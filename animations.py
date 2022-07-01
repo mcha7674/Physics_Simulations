@@ -134,12 +134,12 @@ class Animation():
     def showPlot(self):
         plt.show()
 
-ani = Animation("Data/trajData2.csv",figSize=(6,5),isComparing=False,isMulti=True)
-ani.decorateGraph(title = "Trajectories in real time", xLabel="X (meters)",
-yLabel= "Y (meters)",setLegend=True)
-ani.createAnimation(interval=1)
-#ani.showPlot()
-ani.saveAnimation()
+# ani = Animation("Data/trajData2.csv",figSize=(6,5),isComparing=False,isMulti=True)
+# ani.decorateGraph(title = "Trajectories in real time", xLabel="X (meters)",
+# yLabel= "Y (meters)",setLegend=True)
+# ani.createAnimation(interval=1)
+# #ani.showPlot()
+# ani.saveAnimation()
 
 
   

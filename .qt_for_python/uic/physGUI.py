@@ -16,16 +16,17 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QGridLayout,
-    QHBoxLayout, QLabel, QLineEdit, QMainWindow,
-    QPushButton, QRadioButton, QSizePolicy, QSlider,
-    QStackedWidget, QToolButton, QVBoxLayout, QWidget)
+    QGroupBox, QHBoxLayout, QLabel, QLineEdit,
+    QMainWindow, QPushButton, QRadioButton, QSizePolicy,
+    QSlider, QStackedWidget, QToolButton, QVBoxLayout,
+    QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1069, 672)
+        MainWindow.resize(1106, 672)
         MainWindow.setStyleSheet(u"*{\n"
 "border:none;\n"
 "background-color:transparent;\n"
@@ -375,7 +376,9 @@ class Ui_MainWindow(object):
 "color:black;\n"
 "}")
         self.verticalLayout_9 = QVBoxLayout(self.launchPage)
+        self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.launchHeader = QFrame(self.launchPage)
         self.launchHeader.setObjectName(u"launchHeader")
         self.launchHeader.setMaximumSize(QSize(16777215, 16777215))
@@ -1260,13 +1263,55 @@ class Ui_MainWindow(object):
         self.statsFrame.setStyleSheet(u"")
         self.statsFrame.setFrameShape(QFrame.StyledPanel)
         self.statsFrame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_37 = QVBoxLayout(self.statsFrame)
+        self.verticalLayout_37.setObjectName(u"verticalLayout_37")
+        self.frame_40 = QFrame(self.statsFrame)
+        self.frame_40.setObjectName(u"frame_40")
+        self.frame_40.setMaximumSize(QSize(16777215, 21))
+        self.frame_40.setFrameShape(QFrame.StyledPanel)
+        self.frame_40.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_38 = QVBoxLayout(self.frame_40)
+        self.verticalLayout_38.setSpacing(0)
+        self.verticalLayout_38.setObjectName(u"verticalLayout_38")
+        self.verticalLayout_38.setContentsMargins(0, 0, 0, 0)
+        self.label_2 = QLabel(self.frame_40)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setFont(font5)
+
+        self.verticalLayout_38.addWidget(self.label_2, 0, Qt.AlignHCenter)
+
+
+        self.verticalLayout_37.addWidget(self.frame_40)
+
+        self.groupBox = QGroupBox(self.statsFrame)
+        self.groupBox.setObjectName(u"groupBox")
+
+        self.verticalLayout_37.addWidget(self.groupBox)
+
+        self.groupBox_2 = QGroupBox(self.statsFrame)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+
+        self.verticalLayout_37.addWidget(self.groupBox_2)
+
+        self.groupBox_3 = QGroupBox(self.statsFrame)
+        self.groupBox_3.setObjectName(u"groupBox_3")
+
+        self.verticalLayout_37.addWidget(self.groupBox_3)
+
+        self.frame_39 = QFrame(self.statsFrame)
+        self.frame_39.setObjectName(u"frame_39")
+        self.frame_39.setFrameShape(QFrame.StyledPanel)
+        self.frame_39.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_37.addWidget(self.frame_39)
+
 
         self.verticalLayout_10.addWidget(self.statsFrame)
 
         self.frame_4 = QFrame(self.launchDisplay)
         self.frame_4.setObjectName(u"frame_4")
         self.frame_4.setMinimumSize(QSize(0, 35))
-        self.frame_4.setMaximumSize(QSize(16777215, 50))
+        self.frame_4.setMaximumSize(QSize(16777215, 39))
         self.frame_4.setStyleSheet(u"QPushButton{\n"
 "background-color:rgb(150,0,0);\n"
 "border-radius: 12px;\n"
@@ -1274,13 +1319,15 @@ class Ui_MainWindow(object):
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_19 = QHBoxLayout(self.frame_4)
+        self.horizontalLayout_19.setSpacing(0)
         self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
+        self.horizontalLayout_19.setContentsMargins(0, 0, 0, 22)
         self.launchButton_4 = QPushButton(self.frame_4)
         self.launchButton_4.setObjectName(u"launchButton_4")
         sizePolicy1.setHeightForWidth(self.launchButton_4.sizePolicy().hasHeightForWidth())
         self.launchButton_4.setSizePolicy(sizePolicy1)
-        self.launchButton_4.setMinimumSize(QSize(100, 35))
-        self.launchButton_4.setMaximumSize(QSize(100, 35))
+        self.launchButton_4.setMinimumSize(QSize(100, 34))
+        self.launchButton_4.setMaximumSize(QSize(100, 23))
         self.launchButton_4.setFont(font5)
 
         self.horizontalLayout_19.addWidget(self.launchButton_4)
@@ -1289,8 +1336,8 @@ class Ui_MainWindow(object):
         self.launchButton_2.setObjectName(u"launchButton_2")
         sizePolicy1.setHeightForWidth(self.launchButton_2.sizePolicy().hasHeightForWidth())
         self.launchButton_2.setSizePolicy(sizePolicy1)
-        self.launchButton_2.setMinimumSize(QSize(100, 35))
-        self.launchButton_2.setMaximumSize(QSize(100, 35))
+        self.launchButton_2.setMinimumSize(QSize(90, 35))
+        self.launchButton_2.setMaximumSize(QSize(98, 23))
         self.launchButton_2.setFont(font5)
 
         self.horizontalLayout_19.addWidget(self.launchButton_2)
@@ -1300,7 +1347,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.launchButton_3.sizePolicy().hasHeightForWidth())
         self.launchButton_3.setSizePolicy(sizePolicy1)
         self.launchButton_3.setMinimumSize(QSize(140, 35))
-        self.launchButton_3.setMaximumSize(QSize(140, 35))
+        self.launchButton_3.setMaximumSize(QSize(140, 29))
         self.launchButton_3.setFont(font5)
 
         self.horizontalLayout_19.addWidget(self.launchButton_3)
@@ -1443,9 +1490,13 @@ class Ui_MainWindow(object):
         self.realTimeCheckBox.setText(QCoreApplication.translate("MainWindow", u"Real Time", None))
         self.fastCheckBox.setText(QCoreApplication.translate("MainWindow", u"Fast", None))
         self.launchButton.setText(QCoreApplication.translate("MainWindow", u"LAUNCH", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Trajectory Stats", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Single Trajectory Stats", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Multi Trajectory Stats", None))
+        self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Compare Trajectory Stats", None))
         self.launchButton_4.setText(QCoreApplication.translate("MainWindow", u"Reset Inputs", None))
         self.launchButton_2.setText(QCoreApplication.translate("MainWindow", u"Plots", None))
-        self.launchButton_3.setText(QCoreApplication.translate("MainWindow", u"Show Animation", None))
+        self.launchButton_3.setText(QCoreApplication.translate("MainWindow", u"Recent Animation", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Github", None))
     # retranslateUi
 

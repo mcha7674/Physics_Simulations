@@ -167,7 +167,7 @@ class MainWindow(QMainWindow):
                 self.dataPath += "trajData2.csv"
             else:
                 self.dataPath += "comparisons.csv"
-            self._updateDisplay()
+            self._Animation()
         
     def _outputInput(self):
         with open("inputs.dat", "w") as f:
@@ -183,7 +183,7 @@ class MainWindow(QMainWindow):
                 f.writelines(" ".join(row))
                 f.write("\n")
     
-    def _createAnimation(self):
+    def _Animation(self):
         # Create Animation
         if self.trajType == "single":
             self.isCompare = False
@@ -202,12 +202,6 @@ class MainWindow(QMainWindow):
         yLabel= "Y (meters)",setLegend=self.legend)
         ani.createAnimation()
         ani.showPlot(Block = False)
-
-    def _updateDisplay(self):  
-        # Animation
-        # display the animation
-        self._createAnimation()
-        # initialize gif
 
     def _updateTrajType(self):
         if self.inputs["compareToggle"][1]:

@@ -52,7 +52,7 @@ class Animation():
         if (realTime):
             self.interval = self.dt * 1000 # since interval is in ms
         else: self.interval = 1
-        print('Interval: ', self.interval," seconds")
+        print('Interval: ', self.interval/1000," seconds")
     
     def _initMultiPlots(self):
         if self.isMulti:
@@ -110,11 +110,11 @@ class Animation():
     def closePlot(self):
         plt.close()
 
-# ani = Animation("Data/comparisons.csv",figSize=(9,6),isComparing=True,isMulti=False,realTime=False)
+# ani = Animation("Data/trajData2.csv",figSize=(9,6),isComparing=False,isMulti=True,realTime=False)
 # ani.decorateGraph(title = "Trajectories in real time", xLabel="X (meters)",
 # yLabel= "Y (meters)",setLegend=True)
 # ani.createAnimation()
-# ani.showPlot()
+# ani.showPlot(Block=True)
 # ani.closePlot()
 # ani.saveAnimation()
 

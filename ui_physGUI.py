@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'physGUIfTlVsv.ui'
+## Form generated from reading UI file 'physGUIiAlCWt.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.3.1
 ##
@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1069, 672)
+        MainWindow.resize(1106, 672)
         MainWindow.setStyleSheet(u"*{\n"
 "border:none;\n"
 "background-color:transparent;\n"
@@ -375,7 +375,9 @@ class Ui_MainWindow(object):
 "color:black;\n"
 "}")
         self.verticalLayout_9 = QVBoxLayout(self.launchPage)
+        self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.launchHeader = QFrame(self.launchPage)
         self.launchHeader.setObjectName(u"launchHeader")
         self.launchHeader.setMaximumSize(QSize(16777215, 16777215))
@@ -1266,7 +1268,7 @@ class Ui_MainWindow(object):
         self.frame_4 = QFrame(self.launchDisplay)
         self.frame_4.setObjectName(u"frame_4")
         self.frame_4.setMinimumSize(QSize(0, 35))
-        self.frame_4.setMaximumSize(QSize(16777215, 50))
+        self.frame_4.setMaximumSize(QSize(16777215, 39))
         self.frame_4.setStyleSheet(u"QPushButton{\n"
 "background-color:rgb(150,0,0);\n"
 "border-radius: 12px;\n"
@@ -1274,13 +1276,15 @@ class Ui_MainWindow(object):
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_19 = QHBoxLayout(self.frame_4)
+        self.horizontalLayout_19.setSpacing(0)
         self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
+        self.horizontalLayout_19.setContentsMargins(0, 0, 0, 22)
         self.launchButton_4 = QPushButton(self.frame_4)
         self.launchButton_4.setObjectName(u"launchButton_4")
         sizePolicy1.setHeightForWidth(self.launchButton_4.sizePolicy().hasHeightForWidth())
         self.launchButton_4.setSizePolicy(sizePolicy1)
-        self.launchButton_4.setMinimumSize(QSize(100, 35))
-        self.launchButton_4.setMaximumSize(QSize(100, 35))
+        self.launchButton_4.setMinimumSize(QSize(100, 34))
+        self.launchButton_4.setMaximumSize(QSize(100, 23))
         self.launchButton_4.setFont(font5)
 
         self.horizontalLayout_19.addWidget(self.launchButton_4)
@@ -1289,8 +1293,8 @@ class Ui_MainWindow(object):
         self.launchButton_2.setObjectName(u"launchButton_2")
         sizePolicy1.setHeightForWidth(self.launchButton_2.sizePolicy().hasHeightForWidth())
         self.launchButton_2.setSizePolicy(sizePolicy1)
-        self.launchButton_2.setMinimumSize(QSize(100, 35))
-        self.launchButton_2.setMaximumSize(QSize(100, 35))
+        self.launchButton_2.setMinimumSize(QSize(90, 35))
+        self.launchButton_2.setMaximumSize(QSize(98, 23))
         self.launchButton_2.setFont(font5)
 
         self.horizontalLayout_19.addWidget(self.launchButton_2)
@@ -1300,7 +1304,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.launchButton_3.sizePolicy().hasHeightForWidth())
         self.launchButton_3.setSizePolicy(sizePolicy1)
         self.launchButton_3.setMinimumSize(QSize(140, 35))
-        self.launchButton_3.setMaximumSize(QSize(140, 35))
+        self.launchButton_3.setMaximumSize(QSize(140, 29))
         self.launchButton_3.setFont(font5)
 
         self.horizontalLayout_19.addWidget(self.launchButton_3)
@@ -1445,7 +1449,7 @@ class Ui_MainWindow(object):
         self.launchButton.setText(QCoreApplication.translate("MainWindow", u"LAUNCH", None))
         self.launchButton_4.setText(QCoreApplication.translate("MainWindow", u"Reset Inputs", None))
         self.launchButton_2.setText(QCoreApplication.translate("MainWindow", u"Plots", None))
-        self.launchButton_3.setText(QCoreApplication.translate("MainWindow", u"Show Animation", None))
+        self.launchButton_3.setText(QCoreApplication.translate("MainWindow", u"Recent Animation", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Github", None))
     # retranslateUi
 

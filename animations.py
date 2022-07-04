@@ -50,9 +50,12 @@ class Animation():
         self.dt = self.t[1] - self.t[0]
         # calc correct interval.
         if (realTime):
-            self.interval = self.dt * 1000 # since interval is in ms
+            # mult by 900 instead of 1000 to account for system delays
+            self.interval = int(self.dt * 905) # since interval is in ms
+            print("USING REAL TIME, Interval =  ",self.interval)
         else: self.interval = 1
         print('Interval: ', self.interval/1000," seconds")
+      
     
     def _initMultiPlots(self):
         if self.isMulti:
@@ -86,7 +89,7 @@ class Animation():
         for k,curve in enumerate(self.curves):
             self.curves[k].set_data(self.dataFrames[k]["x"][:i],self.dataFrames[k]["y"][:i])
         return self.curves
-    
+   
     def decorateGraph(self, title = "", xLabel = "", yLabel = "",
     setLegend = False,label = "", setTight = True):
         self.ax.set_xlabel(xLabel)
@@ -110,12 +113,12 @@ class Animation():
     def closePlot(self):
         plt.close()
 
-# ani = Animation("Data/trajData2.csv",figSize=(9,6),isComparing=False,isMulti=True,realTime=False)
+# ani = Animation("Data/trajData.csv",figSize=(9,6),isComparing=False,isMulti=False,realTime=True)
 # ani.decorateGraph(title = "Trajectories in real time", xLabel="X (meters)",
 # yLabel= "Y (meters)",setLegend=True)
 # ani.createAnimation()
 # ani.showPlot(Block=True)
-# ani.closePlot()
+# # ani.closePlot()
 # ani.saveAnimation()
 
 

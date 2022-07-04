@@ -940,3 +940,139 @@ Chosen Initial Velocity: 200
 TIME STAMP: 2022-07-01 08:43:43
 ====================================
 
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 84-80 degrees at steps of5degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 45
+
+TIME STAMP: 2022-07-02 14:40:04
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 95-90 degrees at steps of5degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 200
+
+TIME STAMP: 2022-07-02 17:55:55
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 185-180 degrees at steps of5degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 100
+
+TIME STAMP: 2022-07-02 18:02:47
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 190-180 degrees at steps of15degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 100
+
+TIME STAMP: 2022-07-02 18:02:59
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 190-180 degrees at steps of15degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 100
+
+TIME STAMP: 2022-07-02 18:03:32
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 190-180 degrees at steps of15degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 100
+
+TIME STAMP: 2022-07-02 18:03:36
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 105-100 degrees at steps of10degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 100
+
+TIME STAMP: 2022-07-02 18:05:32
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 105-100 degrees at steps of10degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 100
+
+TIME STAMP: 2022-07-02 18:05:36
+====================================
+

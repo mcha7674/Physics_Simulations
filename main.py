@@ -1,5 +1,6 @@
 import sys
 import subprocess
+import pandas as pd
 from PySide6.QtWidgets import QSizeGrip
 from PySide6.QtCore import QPropertyAnimation,QEasingCurve
 from PySide6.QtWidgets import QMessageBox
@@ -23,6 +24,8 @@ class MainWindow(QMainWindow):
         self.setAttribute(Qt.WA_TranslucentBackground)
         # Add Window Size Grip Feature
         QSizeGrip(self.ui.size_grip)
+        # initialize statistics
+        self._initStats()
         # Close the Window
         self.ui.closeButton.clicked.connect(lambda:self.close())
         # Restore/ Maximize Window
@@ -80,10 +83,13 @@ class MainWindow(QMainWindow):
         # Slider Input signals 
         self.inputs["dtSlider"][0].valueChanged.connect(lambda:self.storeSlider(key="dtSlider",keyLabel = "dt"))
         self.inputs["stepAngleSlider"][0].valueChanged.connect(lambda:self.storeSlider(key="stepAngleSlider",keyLabel = "stepAngle"))
+        # Set default radio button for real time toggle
+        self.ui.realTimeRadioButton.setChecked(True) 
         # init trajectory type
         self.trajType = "none" # Single, Multi, Compare, and None
         # Inputs gathered, now incorporate the launch button
         self.ui.launchButton.clicked.connect(lambda:self.launch())
+
         
     def launch(self):
         """ The MOTHER function
@@ -159,7 +165,7 @@ class MainWindow(QMainWindow):
             print("FIle Output Complete")
             # data sent to file, calc using cpp
             subprocess.call("source.exe")
-            # Decide data
+            # Decide data pathhs and output statistics
             self.dataPath = "Data/"
             if self.trajType == "single":
                 self.dataPath += "trajData.csv"
@@ -167,8 +173,76 @@ class MainWindow(QMainWindow):
                 self.dataPath += "trajData2.csv"
             else:
                 self.dataPath += "comparisons.csv"
-            self._Animation()
-        
+            # output data
+            self._outputStats()
+            # commence and show trajectory animation
+            self._Animation() 
+
+    def _initStats(self):
+        # init all stats to NA
+        self.ui.sRangeLE.setText("NA")
+        self.ui.sHeightLE.setText("NA")
+        self.ui.sTimeLE.setText("NA")
+        self.ui.mRangeLE.setText("NA")
+        self.ui.mHeightLE.setText("NA")
+        self.ui.mTimeLE.setText("NA")
+        self.ui.cRangeLE.setText("NA")
+        self.ui.cHeightLE.setText("NA")
+        self.ui.cTimeLE.setText("NA")
+        self.ui.cRangeLE_2.setText("NA")
+        self.ui.cHeightLE_2.setText("NA")
+        self.ui.cTimeLE_2.setText("NA")
+        self.ui.cRangeLE_3.setText("NA")
+        self.ui.cHeightLE_3.setText("NA")
+        self.ui.cTimeLE_3.setText("NA")
+
+    def _outputStats(self):
+        # set all stats to NA
+        self._initStats()
+        # Fill in relevant stats
+        if self.trajType == "single":
+            df = pd.read_csv(self.dataPath)
+            range = df["x"].max()/1000
+            maxHeight = df["y"].max()/1000
+            flightTime = df["t"].max()
+            self.ui.sRangeLE.setText(str("{:.3f}".format(range))+" km")
+            self.ui.sHeightLE.setText(str("{:.3f}".format(maxHeight))+" km")
+            self.ui.sTimeLE.setText(str("{:.3f}".format(flightTime))+" s")
+        elif self.trajType == "multi":
+            df = pd.read_csv(self.dataPath)
+            range = df["x"].max()/1000
+            maxHeight = df["y"].max()/1000
+            flightTime = df["t"].max()
+            self.ui.mRangeLE.setText(str("{:.3f}".format(range))+" km")
+            self.ui.mHeightLE.setText(str("{:.3f}".format(maxHeight))+" km")
+            self.ui.mTimeLE.setText(str("{:.3f}".format(flightTime))+" s")
+        elif self.trajType == "compare":
+            self.df = pd.read_csv(self.dataPath)
+            self.df1 = self.df[self.df["id"] == "DRAG"]
+            self.df1.reset_index(inplace=True)
+            self.df2 = self.df[self.df["id"] == "NO_DRAG"]
+            self.df2.reset_index(inplace=True)
+            self.df3 = self.df[self.df["id"] == "HEIGHT_DRAG"]
+            self.df3.reset_index(inplace=True)
+            range1 = self.df1["x"].max()/1000 # in km
+            maxHeight1 = self.df1["y"].max()/1000
+            flightTime1 = self.df1["t"].max()
+            range2 = self.df2["x"].max()/1000
+            maxHeight2 = self.df2["y"].max()/1000
+            flightTime2 = self.df2["t"].max()
+            range3 = self.df3["x"].max()/1000
+            maxHeight3 = self.df3["y"].max()/1000
+            flightTime3 = self.df3["t"].max()
+            self.ui.cRangeLE.setText(str("{:.3f}".format(range1))+" km")
+            self.ui.cHeightLE.setText(str("{:.3f}".format(maxHeight1))+" km")
+            self.ui.cTimeLE.setText(str("{:.3f}".format(flightTime1))+" s")
+            self.ui.cRangeLE_2.setText(str("{:.3f}".format(range2))+" km")
+            self.ui.cHeightLE_2.setText(str("{:.3f}".format(maxHeight2))+" km")
+            self.ui.cTimeLE_2.setText(str("{:.3f}".format(flightTime2))+" s")
+            self.ui.cRangeLE_3.setText(str("{:.3f}".format(range3))+" km")
+            self.ui.cHeightLE_3.setText(str("{:.3f}".format(maxHeight3))+" km")
+            self.ui.cTimeLE_3.setText(str("{:.3f}".format(flightTime3))+" s")
+         
     def _outputInput(self):
         with open("inputs.dat", "w") as f:
             # write traj type
@@ -197,7 +271,10 @@ class MainWindow(QMainWindow):
             self.isCompare = True
             self.isMulti = False
             self.legend = True
-        ani = animations.Animation(self.dataPath,figSize=(6,5),isComparing=self.isCompare,isMulti=self.isMulti)
+        
+        self.isRealTime = self.ui.realTimeRadioButton.isChecked()
+        ani = animations.Animation(self.dataPath,figSize=(6,5),
+        isComparing=self.isCompare,isMulti=self.isMulti, realTime=self.isRealTime)
         ani.decorateGraph(title = "Trajectory", xLabel="X (meters)",
         yLabel= "Y (meters)",setLegend=self.legend)
         ani.createAnimation()
@@ -212,7 +289,6 @@ class MainWindow(QMainWindow):
             self.trajType = "single";
         else:
             self.trajType = "single";
-
         self.ui.typeLabel.setText(self.trajType)
             
     def storeLineValue(self, key):

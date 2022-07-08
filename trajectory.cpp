@@ -122,7 +122,7 @@ void Trajectory::createTrajectory()
     // add final data point
     xData.push_back(range);
     yData.push_back(0);
-    vData.push_back(0);
+    vData.push_back(V);
 }
 // INTERPOLATED RANGE FUNCTION
 double Trajectory::interpolatedRange()

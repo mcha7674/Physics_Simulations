@@ -1076,3 +1076,207 @@ Chosen Initial Velocity: 100
 TIME STAMP: 2022-07-02 18:05:36
 ====================================
 
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 85-80 degrees at steps of5degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 200
+
+TIME STAMP: 2022-07-05 08:42:56
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 85-80 degrees at steps of5degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 200
+
+TIME STAMP: 2022-07-05 08:43:26
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 85-80 degrees at steps of5degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 45
+
+TIME STAMP: 2022-07-05 08:44:21
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 51-50 degrees at steps of1degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 45
+
+TIME STAMP: 2022-07-05 08:47:43
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 51-50 degrees at steps of1degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 45
+
+TIME STAMP: 2022-07-05 08:49:11
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 56-55 degrees at steps of1degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 45
+
+TIME STAMP: 2022-07-05 08:51:24
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 61-60 degrees at steps of1degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 30
+
+TIME STAMP: 2022-07-05 08:57:41
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 61-60 degrees at steps of1degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 45
+
+TIME STAMP: 2022-07-07 09:24:47
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 61-60 degrees at steps of1degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 45
+
+TIME STAMP: 2022-07-07 09:27:27
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 61-60 degrees at steps of1degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 45
+
+TIME STAMP: 2022-07-07 09:29:02
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 46-45 degrees at steps of1degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 45
+
+TIME STAMP: 2022-07-07 09:32:23
+====================================
+
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: false
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+
+Custom Inputs:
+Angle Range: 61-60 degrees at steps of1degrees
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 45
+
+TIME STAMP: 2022-07-07 09:33:46
+====================================
+

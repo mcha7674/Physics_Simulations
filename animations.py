@@ -13,7 +13,6 @@ Creates x vs y animation for a singular trajectory
 class Animation():
     def __init__(self,dataPath, figSize = (10,6), color = "black",isComparing = False,isMulti=False, realTime = False):
         self.df = pd.read_csv(dataPath)
-        print("INIT DATASIZE: ", len(self.df["x"]))
         self.dataPath = dataPath
         self.figSize = figSize
         self.color = color
@@ -52,9 +51,7 @@ class Animation():
         if (realTime):
             # mult by 900 instead of 1000 to account for system delays
             self.interval = int(self.dt * 905) # since interval is in ms
-            print("USING REAL TIME, Interval =  ",self.interval)
         else: self.interval = 1
-        print('Interval: ', self.interval/1000," seconds")
       
     
     def _initMultiPlots(self):
@@ -117,7 +114,11 @@ class Animation():
 # ani.decorateGraph(title = "Trajectories in real time", xLabel="X (meters)",
 # yLabel= "Y (meters)",setLegend=True)
 # ani.createAnimation()
+
 # ani.showPlot(Block=True)
+# input("Enter something: ")
+# fig = plt.gcf()
+# fig.show()
 # # ani.closePlot()
 # ani.saveAnimation()
 

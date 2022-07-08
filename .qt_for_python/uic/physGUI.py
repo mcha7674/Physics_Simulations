@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1137, 672)
+        MainWindow.resize(1137, 677)
         MainWindow.setStyleSheet(u"*{\n"
 "border:none;\n"
 "background-color:transparent;\n"
@@ -58,7 +58,7 @@ class Ui_MainWindow(object):
         self.menuSideBar.setObjectName(u"menuSideBar")
         self.menuSideBar.setEnabled(True)
         self.menuSideBar.setMinimumSize(QSize(50, 0))
-        self.menuSideBar.setMaximumSize(QSize(50, 16777215))
+        self.menuSideBar.setMaximumSize(QSize(117, 16777215))
         self.menuSideBar.setStyleSheet(u"QToolButton{\n"
 "background-color:rgb(150,0,0);\n"
 "font: 13pt \"Segoe UI\";\n"
@@ -354,9 +354,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.Description = QLabel(self.frame)
         self.Description.setObjectName(u"Description")
-        self.Description.setMaximumSize(QSize(16777215, 100))
+        self.Description.setMaximumSize(QSize(16777215, 400))
         font4 = QFont()
-        font4.setPointSize(16)
+        font4.setPointSize(14)
         self.Description.setFont(font4)
         self.Description.setTextFormat(Qt.RichText)
         self.Description.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
@@ -588,25 +588,17 @@ class Ui_MainWindow(object):
         palette.setBrush(QPalette.Active, QPalette.ButtonText, brush)
         palette.setBrush(QPalette.Active, QPalette.Base, brush1)
         palette.setBrush(QPalette.Active, QPalette.Window, brush1)
-        brush2 = QBrush(QColor(147, 147, 147, 255))
-        brush2.setStyle(Qt.SolidPattern)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Active, QPalette.PlaceholderText, brush2)
+        palette.setBrush(QPalette.Active, QPalette.PlaceholderText, brush)
 #endif
-        brush3 = QBrush(QColor(0, 0, 0, 255))
-        brush3.setStyle(Qt.SolidPattern)
-        palette.setBrush(QPalette.Inactive, QPalette.WindowText, brush3)
-        brush4 = QBrush(QColor(240, 240, 240, 255))
-        brush4.setStyle(Qt.SolidPattern)
-        palette.setBrush(QPalette.Inactive, QPalette.Button, brush4)
-        palette.setBrush(QPalette.Inactive, QPalette.Text, brush3)
-        palette.setBrush(QPalette.Inactive, QPalette.ButtonText, brush3)
-        palette.setBrush(QPalette.Inactive, QPalette.Base, brush)
-        palette.setBrush(QPalette.Inactive, QPalette.Window, brush4)
-        brush5 = QBrush(QColor(0, 0, 0, 128))
-        brush5.setStyle(Qt.SolidPattern)
+        palette.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
+        palette.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette.setBrush(QPalette.Inactive, QPalette.Text, brush)
+        palette.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+        palette.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette.setBrush(QPalette.Inactive, QPalette.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush5)
+        palette.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush)
 #endif
         palette.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
         palette.setBrush(QPalette.Disabled, QPalette.Button, brush1)
@@ -615,7 +607,7 @@ class Ui_MainWindow(object):
         palette.setBrush(QPalette.Disabled, QPalette.Base, brush1)
         palette.setBrush(QPalette.Disabled, QPalette.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
+        palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush)
 #endif
         self.launchGeneral.setPalette(palette)
         self.launchGeneral.setFrameShape(QFrame.StyledPanel)
@@ -724,18 +716,20 @@ class Ui_MainWindow(object):
         palette1 = QPalette()
         palette1.setBrush(QPalette.Active, QPalette.Button, brush)
         palette1.setBrush(QPalette.Active, QPalette.Window, brush)
+        brush2 = QBrush(QColor(0, 0, 0, 255))
+        brush2.setStyle(Qt.SolidPattern)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette1.setBrush(QPalette.Active, QPalette.PlaceholderText, brush2)
 #endif
-        palette1.setBrush(QPalette.Inactive, QPalette.Button, brush4)
-        palette1.setBrush(QPalette.Inactive, QPalette.Window, brush4)
+        palette1.setBrush(QPalette.Inactive, QPalette.Button, brush)
+        palette1.setBrush(QPalette.Inactive, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush5)
+        palette1.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush2)
 #endif
         palette1.setBrush(QPalette.Disabled, QPalette.Button, brush)
         palette1.setBrush(QPalette.Disabled, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette1.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
+        palette1.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush2)
 #endif
         self.x0LineEdit.setPalette(palette1)
         self.x0LineEdit.setMaxLength(5)
@@ -753,15 +747,15 @@ class Ui_MainWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette2.setBrush(QPalette.Active, QPalette.PlaceholderText, brush2)
 #endif
-        palette2.setBrush(QPalette.Inactive, QPalette.Button, brush4)
-        palette2.setBrush(QPalette.Inactive, QPalette.Window, brush4)
+        palette2.setBrush(QPalette.Inactive, QPalette.Button, brush)
+        palette2.setBrush(QPalette.Inactive, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush5)
+        palette2.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush2)
 #endif
         palette2.setBrush(QPalette.Disabled, QPalette.Button, brush)
         palette2.setBrush(QPalette.Disabled, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette2.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
+        palette2.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush2)
 #endif
         self.y0LineEdit.setPalette(palette2)
         self.y0LineEdit.setMaxLength(5)
@@ -777,15 +771,15 @@ class Ui_MainWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette3.setBrush(QPalette.Active, QPalette.PlaceholderText, brush2)
 #endif
-        palette3.setBrush(QPalette.Inactive, QPalette.Button, brush4)
-        palette3.setBrush(QPalette.Inactive, QPalette.Window, brush4)
+        palette3.setBrush(QPalette.Inactive, QPalette.Button, brush)
+        palette3.setBrush(QPalette.Inactive, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette3.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush5)
+        palette3.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush2)
 #endif
         palette3.setBrush(QPalette.Disabled, QPalette.Button, brush)
         palette3.setBrush(QPalette.Disabled, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette3.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
+        palette3.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush2)
 #endif
         self.v0LineEdit.setPalette(palette3)
         self.v0LineEdit.setMaxLength(4)
@@ -801,15 +795,15 @@ class Ui_MainWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette4.setBrush(QPalette.Active, QPalette.PlaceholderText, brush2)
 #endif
-        palette4.setBrush(QPalette.Inactive, QPalette.Button, brush4)
-        palette4.setBrush(QPalette.Inactive, QPalette.Window, brush4)
+        palette4.setBrush(QPalette.Inactive, QPalette.Button, brush)
+        palette4.setBrush(QPalette.Inactive, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette4.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush5)
+        palette4.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush2)
 #endif
         palette4.setBrush(QPalette.Disabled, QPalette.Button, brush)
         palette4.setBrush(QPalette.Disabled, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette4.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
+        palette4.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush2)
 #endif
         self.angleLineEdit.setPalette(palette4)
         self.angleLineEdit.setMaxLength(3)
@@ -927,15 +921,15 @@ class Ui_MainWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette5.setBrush(QPalette.Active, QPalette.PlaceholderText, brush2)
 #endif
-        palette5.setBrush(QPalette.Inactive, QPalette.Button, brush4)
-        palette5.setBrush(QPalette.Inactive, QPalette.Window, brush4)
+        palette5.setBrush(QPalette.Inactive, QPalette.Button, brush)
+        palette5.setBrush(QPalette.Inactive, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette5.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush5)
+        palette5.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush2)
 #endif
         palette5.setBrush(QPalette.Disabled, QPalette.Button, brush)
         palette5.setBrush(QPalette.Disabled, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette5.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
+        palette5.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush2)
 #endif
         self.finalAngleLineEdit.setPalette(palette5)
         self.finalAngleLineEdit.setMaxLength(3)
@@ -1017,15 +1011,15 @@ class Ui_MainWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette6.setBrush(QPalette.Active, QPalette.PlaceholderText, brush2)
 #endif
-        palette6.setBrush(QPalette.Inactive, QPalette.Button, brush4)
-        palette6.setBrush(QPalette.Inactive, QPalette.Window, brush4)
+        palette6.setBrush(QPalette.Inactive, QPalette.Button, brush)
+        palette6.setBrush(QPalette.Inactive, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette6.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush5)
+        palette6.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush2)
 #endif
         palette6.setBrush(QPalette.Disabled, QPalette.Button, brush)
         palette6.setBrush(QPalette.Disabled, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette6.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
+        palette6.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush2)
 #endif
         self.massLineEdit.setPalette(palette6)
         self.massLineEdit.setMaxLength(4)
@@ -1041,15 +1035,15 @@ class Ui_MainWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette7.setBrush(QPalette.Active, QPalette.PlaceholderText, brush2)
 #endif
-        palette7.setBrush(QPalette.Inactive, QPalette.Button, brush4)
-        palette7.setBrush(QPalette.Inactive, QPalette.Window, brush4)
+        palette7.setBrush(QPalette.Inactive, QPalette.Button, brush)
+        palette7.setBrush(QPalette.Inactive, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette7.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush5)
+        palette7.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush2)
 #endif
         palette7.setBrush(QPalette.Disabled, QPalette.Button, brush)
         palette7.setBrush(QPalette.Disabled, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette7.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
+        palette7.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush2)
 #endif
         self.radiusLineEdit.setPalette(palette7)
         self.radiusLineEdit.setMaxLength(5)
@@ -1161,15 +1155,15 @@ class Ui_MainWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette8.setBrush(QPalette.Active, QPalette.PlaceholderText, brush2)
 #endif
-        palette8.setBrush(QPalette.Inactive, QPalette.Button, brush4)
-        palette8.setBrush(QPalette.Inactive, QPalette.Window, brush4)
+        palette8.setBrush(QPalette.Inactive, QPalette.Button, brush)
+        palette8.setBrush(QPalette.Inactive, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette8.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush5)
+        palette8.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush2)
 #endif
         palette8.setBrush(QPalette.Disabled, QPalette.Button, brush)
         palette8.setBrush(QPalette.Disabled, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette8.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
+        palette8.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush2)
 #endif
         self.seaTemptLineEdit.setPalette(palette8)
         self.seaTemptLineEdit.setMaxLength(3)
@@ -1226,15 +1220,15 @@ class Ui_MainWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette9.setBrush(QPalette.Active, QPalette.PlaceholderText, brush2)
 #endif
-        palette9.setBrush(QPalette.Inactive, QPalette.Button, brush4)
-        palette9.setBrush(QPalette.Inactive, QPalette.Window, brush4)
+        palette9.setBrush(QPalette.Inactive, QPalette.Button, brush)
+        palette9.setBrush(QPalette.Inactive, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette9.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush5)
+        palette9.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush2)
 #endif
         palette9.setBrush(QPalette.Disabled, QPalette.Button, brush)
         palette9.setBrush(QPalette.Disabled, QPalette.Window, brush)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette9.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
+        palette9.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush2)
 #endif
         self.vWindLineEdit.setPalette(palette9)
         self.vWindLineEdit.setMaxLength(3)
@@ -1332,7 +1326,7 @@ class Ui_MainWindow(object):
         self.timeStepSlider.setMaximumSize(QSize(80, 15))
         self.timeStepSlider.setMinimum(10)
         self.timeStepSlider.setMaximum(100)
-        self.timeStepSlider.setSingleStep(5)
+        self.timeStepSlider.setSingleStep(1)
         self.timeStepSlider.setOrientation(Qt.Horizontal)
         self.timeStepSlider.setTickPosition(QSlider.NoTicks)
         self.timeStepSlider.setTickInterval(1)
@@ -1961,25 +1955,25 @@ class Ui_MainWindow(object):
         self.horizontalLayout_19.setSpacing(0)
         self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
         self.horizontalLayout_19.setContentsMargins(15, 2, 0, 14)
+        self.createPlotsButton = QPushButton(self.frame_4)
+        self.createPlotsButton.setObjectName(u"createPlotsButton")
+        sizePolicy1.setHeightForWidth(self.createPlotsButton.sizePolicy().hasHeightForWidth())
+        self.createPlotsButton.setSizePolicy(sizePolicy1)
+        self.createPlotsButton.setMinimumSize(QSize(100, 30))
+        self.createPlotsButton.setMaximumSize(QSize(100, 23))
+        self.createPlotsButton.setFont(font5)
+
+        self.horizontalLayout_19.addWidget(self.createPlotsButton)
+
         self.resetButton = QPushButton(self.frame_4)
         self.resetButton.setObjectName(u"resetButton")
         sizePolicy1.setHeightForWidth(self.resetButton.sizePolicy().hasHeightForWidth())
         self.resetButton.setSizePolicy(sizePolicy1)
-        self.resetButton.setMinimumSize(QSize(100, 30))
-        self.resetButton.setMaximumSize(QSize(100, 23))
+        self.resetButton.setMinimumSize(QSize(90, 30))
+        self.resetButton.setMaximumSize(QSize(98, 23))
         self.resetButton.setFont(font5)
 
         self.horizontalLayout_19.addWidget(self.resetButton)
-
-        self.plotsNavigateButton = QPushButton(self.frame_4)
-        self.plotsNavigateButton.setObjectName(u"plotsNavigateButton")
-        sizePolicy1.setHeightForWidth(self.plotsNavigateButton.sizePolicy().hasHeightForWidth())
-        self.plotsNavigateButton.setSizePolicy(sizePolicy1)
-        self.plotsNavigateButton.setMinimumSize(QSize(90, 30))
-        self.plotsNavigateButton.setMaximumSize(QSize(98, 23))
-        self.plotsNavigateButton.setFont(font5)
-
-        self.horizontalLayout_19.addWidget(self.plotsNavigateButton)
 
         self.recentAnimButton = QPushButton(self.frame_4)
         self.recentAnimButton.setObjectName(u"recentAnimButton")
@@ -2003,6 +1997,96 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.launchPage)
         self.plotsPage = QWidget()
         self.plotsPage.setObjectName(u"plotsPage")
+        self.verticalLayout_40 = QVBoxLayout(self.plotsPage)
+        self.verticalLayout_40.setSpacing(0)
+        self.verticalLayout_40.setObjectName(u"verticalLayout_40")
+        self.verticalLayout_40.setContentsMargins(0, 0, 0, 0)
+        self.stackedWidget_2 = QStackedWidget(self.plotsPage)
+        self.stackedWidget_2.setObjectName(u"stackedWidget_2")
+        self.page = QWidget()
+        self.page.setObjectName(u"page")
+        self.horizontalLayout_29 = QHBoxLayout(self.page)
+        self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
+        self.frame_50 = QFrame(self.page)
+        self.frame_50.setObjectName(u"frame_50")
+        self.frame_50.setMaximumSize(QSize(150, 16777215))
+        self.frame_50.setFrameShape(QFrame.StyledPanel)
+        self.frame_50.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_41 = QVBoxLayout(self.frame_50)
+        self.verticalLayout_41.setSpacing(0)
+        self.verticalLayout_41.setObjectName(u"verticalLayout_41")
+        self.verticalLayout_41.setContentsMargins(0, 0, 0, 0)
+        self.prevPlotButton = QPushButton(self.frame_50)
+        self.prevPlotButton.setObjectName(u"prevPlotButton")
+        self.prevPlotButton.setMinimumSize(QSize(86, 26))
+        self.prevPlotButton.setMaximumSize(QSize(113, 16777215))
+        self.prevPlotButton.setFont(font7)
+        self.prevPlotButton.setStyleSheet(u"border-radius:5px;\n"
+"background-color: rgb(150, 0, 0);")
+
+        self.verticalLayout_41.addWidget(self.prevPlotButton, 0, Qt.AlignHCenter)
+
+
+        self.horizontalLayout_29.addWidget(self.frame_50)
+
+        self.plotDisplayLabel = QLabel(self.page)
+        self.plotDisplayLabel.setObjectName(u"plotDisplayLabel")
+        self.plotDisplayLabel.setMinimumSize(QSize(667, 500))
+        self.plotDisplayLabel.setMaximumSize(QSize(667, 500))
+        font13 = QFont()
+        font13.setPointSize(16)
+        font13.setBold(True)
+        self.plotDisplayLabel.setFont(font13)
+        self.plotDisplayLabel.setScaledContents(True)
+        self.plotDisplayLabel.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_29.addWidget(self.plotDisplayLabel)
+
+        self.frame_49 = QFrame(self.page)
+        self.frame_49.setObjectName(u"frame_49")
+        self.frame_49.setMaximumSize(QSize(150, 16777215))
+        self.frame_49.setFrameShape(QFrame.StyledPanel)
+        self.frame_49.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_42 = QVBoxLayout(self.frame_49)
+        self.verticalLayout_42.setSpacing(0)
+        self.verticalLayout_42.setObjectName(u"verticalLayout_42")
+        self.verticalLayout_42.setContentsMargins(0, 0, 0, 0)
+        self.nextPlotButton = QPushButton(self.frame_49)
+        self.nextPlotButton.setObjectName(u"nextPlotButton")
+        self.nextPlotButton.setMinimumSize(QSize(75, 25))
+        self.nextPlotButton.setFont(font7)
+        self.nextPlotButton.setStyleSheet(u"border-radius:5px;\n"
+"background-color: rgb(150, 0, 0);")
+
+        self.verticalLayout_42.addWidget(self.nextPlotButton, 0, Qt.AlignHCenter)
+
+
+        self.horizontalLayout_29.addWidget(self.frame_49)
+
+        self.stackedWidget_2.addWidget(self.page)
+
+        self.verticalLayout_40.addWidget(self.stackedWidget_2)
+
+        self.frame_44 = QFrame(self.plotsPage)
+        self.frame_44.setObjectName(u"frame_44")
+        self.frame_44.setMinimumSize(QSize(0, 75))
+        self.frame_44.setMaximumSize(QSize(16777215, 16777215))
+        self.frame_44.setFrameShape(QFrame.StyledPanel)
+        self.frame_44.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_44 = QHBoxLayout(self.frame_44)
+        self.horizontalLayout_44.setObjectName(u"horizontalLayout_44")
+        self.savePlotsButton = QPushButton(self.frame_44)
+        self.savePlotsButton.setObjectName(u"savePlotsButton")
+        self.savePlotsButton.setMaximumSize(QSize(103, 41))
+        self.savePlotsButton.setFont(font1)
+        self.savePlotsButton.setStyleSheet(u"border-radius:5px;\n"
+"background-color: rgb(150, 0, 0);")
+
+        self.horizontalLayout_44.addWidget(self.savePlotsButton)
+
+
+        self.verticalLayout_40.addWidget(self.frame_44)
+
         self.stackedWidget.addWidget(self.plotsPage)
 
         self.gridLayout.addWidget(self.stackedWidget, 0, 0, 1, 1)
@@ -2094,7 +2178,19 @@ class Ui_MainWindow(object):
         self.maximizeButton.setText("")
         self.closeButton.setText("")
         self.Title.setText(QCoreApplication.translate("MainWindow", u"Projectile Motion Physics Simulator", None))
-        self.Description.setText(QCoreApplication.translate("MainWindow", u"Description Goes Here. Introduce some projectile motion physics, equations used, conditions available dsfg sdfg sdfg sf g ", None))
+        self.Description.setText(QCoreApplication.translate("MainWindow", u"In this Sim, you will be able to determine how each parameter (initial height, initial angle, initial speed, mass, diameter, and altitude) affects the trajectory of an object, with and without air resistance.\n"
+"\n"
+"Predict how varying the initial conditions will affect a projectile\u2019s path, and provide an explanation for the prediction.\n"
+"\n"
+"Estimate where an object will land, given its initial conditions.\n"
+"\n"
+"Determine that the x and y motion of a projectile are independent.\n"
+"\n"
+"Investigate the variables that affect the drag force.\n"
+"\n"
+"Describe the the effect that the drag force has on the velocity and acceleration.\n"
+"\n"
+"Discuss projectile motion using common vocabulary (such as: launch angle, initial speed, initial height, range, time).", None))
         self.label_23.setText(QCoreApplication.translate("MainWindow", u"Select Medium: ", None))
         self.dragButton.setText(QCoreApplication.translate("MainWindow", u"Air", None))
         self.vacButton.setText(QCoreApplication.translate("MainWindow", u"Vaccum", None))
@@ -2163,9 +2259,13 @@ class Ui_MainWindow(object):
         self.label_37.setText(QCoreApplication.translate("MainWindow", u"Flight Time:", None))
         self.saveStatsButton.setText(QCoreApplication.translate("MainWindow", u"Save Stats", None))
         self.openStatsButton.setText(QCoreApplication.translate("MainWindow", u"Open Stats", None))
+        self.createPlotsButton.setText(QCoreApplication.translate("MainWindow", u"Create Plots", None))
         self.resetButton.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
-        self.plotsNavigateButton.setText(QCoreApplication.translate("MainWindow", u"Plots", None))
         self.recentAnimButton.setText(QCoreApplication.translate("MainWindow", u"Show Recent Animation", None))
+        self.prevPlotButton.setText(QCoreApplication.translate("MainWindow", u"Previous Plot", None))
+        self.plotDisplayLabel.setText(QCoreApplication.translate("MainWindow", u"No Plots Created to Display", None))
+        self.nextPlotButton.setText(QCoreApplication.translate("MainWindow", u"Next Plot", None))
+        self.savePlotsButton.setText(QCoreApplication.translate("MainWindow", u"Save Plots", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Github", None))
     # retranslateUi
 

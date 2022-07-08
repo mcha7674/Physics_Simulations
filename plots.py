@@ -12,7 +12,8 @@ class trajPlot():
     plotDir = "Plots/"
     dataDir = "Data/"
     Ids = ("Drag","HEIGHT_DRAG","NO_DRAG")
-    def __init__(self,pName="",dName="",figsize = (11,10),
+
+    def __init__(self,pName="",dName="",figsize = (13,8),
     comparisons=False, manyTraj = False, scatterSize = 2):
         # init and default plot/data names
         self.plotName = pName
@@ -46,15 +47,18 @@ class trajPlot():
             sys.exit()
         
     def posTraj(self,color = "black",Label = ""):
-        self.axes.scatter(self.x,self.y,c=color,s = self.scatterSize,label= Label)
+        #self.axes.scatter(self.x,self.y,c=color,s = self.scatterSize,label= Label)
+        self.axes.plot(self.x,self.y,c=color,label= Label)
         
     def speedTraj(self,color = "blue",Label = ""):
-        self.axes.scatter(self.t,self.v,c=color,s = self.scatterSize,label= Label)
-        self.fig.savefig(self.plotPath)
+        #self.axes.scatter(self.t,self.v,c=color,s = self.scatterSize,label= Label)
+        self.axes.plot(self.t,self.v,c=color,label= Label)
     
     def speedAndPosTraj(self,speedColor = "blue", posColor = "black", Label = ""):
-        self.axes[0].scatter(self.x,self.y,c=posColor,s = self.scatterSize,label= Label)
-        self.axes[1].scatter(self.t,self.v,c=speedColor,s = self.scatterSize,label= Label)
+        #self.axes[0].scatter(self.x,self.y,c=posColor,s = self.scatterSize,label= Label)
+        #self.axes[1].scatter(self.t,self.v,c=speedColor,s = self.scatterSize,label= Label)
+        self.axes[0].plot(self.x,self.y,c=posColor,label= Label)
+        self.axes[1].plot(self.t,self.v,c=speedColor,label= Label)
 
     def newSubplot(self,xlb = [],ylb=[], title=[],rowCols =[1,1]):
         """
@@ -75,6 +79,7 @@ class trajPlot():
     def saveFig(self,pName = "",res = 450):
         if pName != "": # then assign value
             self.plotPath = trajPlot.plotDir + pName
+        plt.tight_layout()
         self.fig.savefig(self.plotPath,dpi=res)
 
     # Setters, Getters, and checkers
@@ -90,7 +95,9 @@ class trajPlot():
         self.axes.legend()
     def getAngle(self):
         return self.df["angle"][0]
+    def closePlot(self):
+        plt.close()
 
-# df = pd.read_csv("Data/trajData.csv")
+# df = pd.read_csv("Data/trajData2.csv")
 # plt.plot(df["x"], df["y"])
 # plt.savefig("Plots/test.png")

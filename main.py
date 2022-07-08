@@ -1,16 +1,21 @@
+from genericpath import exists
 import sys
 import subprocess
+import pandas as pd
 from PySide6.QtWidgets import QSizeGrip
 from PySide6.QtCore import QPropertyAnimation,QEasingCurve
 from PySide6.QtWidgets import QMessageBox
 from PySide6.QtGui import QMovie
 from ui_physGUI import * # import GUI file
-import animations
+import animations # custom import
+import plots # custom import
+import os
+import shutil
 """
 Contains all code and handling for gui interface
 """
 class MainWindow(QMainWindow):
-    pages = {"home":3,"launch":0,"stats":1,"plots":2}
+    pages = {"home":0,"launch":1,"plots":2}
     def __init__(self):
         super().__init__()  # grab inherited constructor
         self.ui = Ui_MainWindow()
@@ -23,6 +28,8 @@ class MainWindow(QMainWindow):
         self.setAttribute(Qt.WA_TranslucentBackground)
         # Add Window Size Grip Feature
         QSizeGrip(self.ui.size_grip)
+        # initialize statistics
+        self._initStats()
         # Close the Window
         self.ui.closeButton.clicked.connect(lambda:self.close())
         # Restore/ Maximize Window
@@ -38,10 +45,9 @@ class MainWindow(QMainWindow):
         # First Set the start up page:
         self.ui.stackedWidget.setCurrentIndex(MainWindow.pages["home"])
         # Integrate Menu buttons here
-        self.ui.homeButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(3))
-        self.ui.launchMenuButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(0))
+        self.ui.homeButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(0))
+        self.ui.launchMenuButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(1))
         self.ui.plotsButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(2))
-        self.ui.statsButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(1))
         ###### Grab Inputs ######
         self.inputs = \
         {   # value is in  [inputObject, value]
@@ -81,13 +87,25 @@ class MainWindow(QMainWindow):
         # Slider Input signals 
         self.inputs["dtSlider"][0].valueChanged.connect(lambda:self.storeSlider(key="dtSlider",keyLabel = "dt"))
         self.inputs["stepAngleSlider"][0].valueChanged.connect(lambda:self.storeSlider(key="stepAngleSlider",keyLabel = "stepAngle"))
+        # Set default radio button for real time toggle
+        self.ui.realTimeRadioButton.setChecked(True) 
         # init trajectory type
         self.trajType = "none" # Single, Multi, Compare, and None
         # Inputs gathered, now incorporate the launch button
         self.ui.launchButton.clicked.connect(lambda:self.launch())
+        # create Plots button and plot name array
+        self.ui.createPlotsButton.clicked.connect(lambda:self._createPlots())
+        self.ui.nextPlotButton.clicked.connect(lambda:self._cyclePlots("next"))
+        self.ui.prevPlotButton.clicked.connect(lambda:self._cyclePlots("prev"))
+        # Show recent animation button
+        self.ui.recentAnimButton.clicked.connect(lambda:self._showRecentAnimation())
+        # Reset Button
+        self.ui.resetButton.clicked.connect(lambda:self._launchReset())
+
         
     def launch(self):
         """ The MOTHER function
+        0. Delete all previous data in 'Plots' and 'Data'
         1. Decide what type of trajectory can be conducted based off of inputs
             6 Types:
                 Single trajectory - drag, vaccum, adiabatic
@@ -96,6 +114,8 @@ class MainWindow(QMainWindow):
         3. If trajectory decided, store all inputs to file (after clearing it) by iterating dictionary
         4. Execute cpp code to calculate trajectory data (external to class) which stores to files
         """
+        # delete old data and plots
+        self.rmDataAndPlots()
         # initialize pop up msg box:
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Critical)
@@ -160,7 +180,7 @@ class MainWindow(QMainWindow):
             print("FIle Output Complete")
             # data sent to file, calc using cpp
             subprocess.call("source.exe")
-            # Decide data
+            # Decide data pathhs and output statistics
             self.dataPath = "Data/"
             if self.trajType == "single":
                 self.dataPath += "trajData.csv"
@@ -168,8 +188,219 @@ class MainWindow(QMainWindow):
                 self.dataPath += "trajData2.csv"
             else:
                 self.dataPath += "comparisons.csv"
-            self._updateDisplay()
+            # output data
+            self._outputStats()
+            # commence and show trajectory animation
+            self._Animation()
+
+    ##############PLOTS########################
+    def rmDataAndPlots(self, mother_folder = "data_plots_stats",directories = ("Data","Plots")):
+        for directory in directories:
+            for filename in os.listdir(directory):
+                f = os.path.join(directory, filename)
+                if os.path.isfile(f):
+                    shutil.copy(f, mother_folder)
+                    os.remove(f)
+
+    def _cyclePlots(self, direction):
+        # only displaying one plot
+        if direction == "next" and len(self.plotNames) != 1:
+            self.iCount += 1
+        if direction == "prev" and len(self.plotNames) != 1:
+            self.iCount -= 1
+        index = self.iCount % len(self.plotNames)
+        self._addPlotPixmap(self.plotNames[index])
         
+    def _addPlotPixmap(self, plotName):
+        pixmap = QPixmap("Plots/"+plotName)
+        self.ui.plotDisplayLabel.setPixmap(pixmap)
+        self.ui.plotDisplayLabel.setScaledContents(True)
+
+    def _createPlots(self):
+        """
+        Creates and appends plots as png's inside the Plots directory
+        """
+        self.plotNames = []
+        self.iCount = 0
+        directory = "Data/"
+        plotPath = "Plots/"
+        figSize = (12,8)
+        if self.trajType == "single":
+            dataName = "trajData.csv"
+            plotName = "singlePos.png"
+            # single Positional trajectory
+            xyPlot = plots.trajPlot(figsize=figSize)
+            xyPlot.read_data(dataName=dataName)
+            xyPlot.newSubplot(xlb=["Position in X (meters)"],
+            ylb = ["Position in Y (meters)"],title=["Trajectory of Shell"])
+            xyPlot.posTraj()
+            print("Plot saved to ", plotPath + plotName)
+            xyPlot.saveFig(pName = plotName)
+            xyPlot.closePlot()
+            self._addPlotPixmap(plotName)
+            self.plotNames.append(plotName)
+            # single trajectory velocity
+            vPlot = plots.trajPlot(figsize=figSize)
+            vPlot.read_data(dataName=dataName)
+            vPlot.newSubplot(xlb=["Time (seconds)"],
+            ylb = ["Projectile Speed (meters/second)"],title=["Speed of projectile vs Time"])
+            vPlot.speedTraj(color="blue")
+            plotName = "singleSpeed.png"
+            print("Plot saved to ", plotPath + plotName)
+            vPlot.saveFig(pName = plotName)
+            vPlot.closePlot()
+            self.plotNames.append(plotName)
+            # single positional AND velocity trajectories
+            vAndXY_plot = plots.trajPlot(figsize=figSize)
+            vAndXY_plot.read_data(dataName=dataName)
+            vAndXY_plot.newSubplot(xlb=["Position in X (meters)","Time (seconds)"],
+            ylb = ["Position in Y (meters)","Projectile Speed (meters/second)"],
+            title=["Trajectory of Shell","Speed of projectile vs Time"],rowCols=[2,1])
+            plotName = "singleSpeedAndPos.png"
+            vAndXY_plot.speedAndPosTraj(speedColor="blue",posColor="black")
+            print("Plot saved to ", plotPath + plotName)
+            vAndXY_plot.saveFig(pName = plotName)
+            vAndXY_plot.closePlot()
+            self.plotNames.append(plotName)
+        elif self.trajType == "multi":
+            dataName = "trajData2.csv"
+            dataName2 = "maxTraj.csv"
+            plotName = "manyTraj.png"
+            multiPlot = plots.trajPlot(manyTraj=True)
+            multiPlot.read_data(dataName=dataName)
+            multiPlot.newSubplot(xlb=["Position in X (meters)"],
+            ylb = ["Position in Y (meters)"],title=["Trajectory of Shell"])
+            multiPlot.posTraj()
+            multiPlot.read_data(dataName=dataName2)
+            maxAngle = multiPlot.getAngle()
+            multiPlot.posTraj(color="orange",
+                Label = "Trajectory with max range for angle {} degrees".format(maxAngle))
+            multiPlot.setLegend()
+            multiPlot.saveFig(plotName)
+            multiPlot.closePlot()
+            print("Plot saved to ", plotPath + plotName)
+            self._addPlotPixmap(plotName)
+            self.plotNames.append(plotName)
+        elif self.trajType == "compare":
+            # JUST DRAG PLOTS
+            plotName = "dragComparisons.png"
+            comparePlots = plots.trajPlot(comparisons=True)
+            comparePlots.read_data(dataName="comparisons.csv",Id="DRAG")
+            comparePlots.newSubplot(xlb=["Position in X (meters)"],
+            ylb = ["Position in Y (meters)"],title=["Trajectory of Shell"])
+            comparePlots.posTraj(Label = "Drag With NO Adiabatic Height Dependence",
+            color="blue")
+            comparePlots.read_data(dataName="comparisons.csv",Id="HEIGHT_DRAG")
+            comparePlots.posTraj(Label = "Drag With Adiabatic Height Dependence",
+            color="orange")
+            comparePlots.setLegend()
+            comparePlots.saveFig(plotName)
+            print("Plot with Drag and Height dependent drag comparisons saved to ",
+                plotPath + plotName)
+            comparePlots.closePlot()
+            # add 1st plot to Plots page label and append name
+            self._addPlotPixmap(plotName)
+            self.plotNames.append(plotName)
+            # Plot No DRAG AND DRAG PLOTS
+            plotName = "comparisons.png"
+            comparePlots.read_data(dataName="comparisons.csv",Id="NO_DRAG")
+            comparePlots.posTraj(Label = "Vaccum",color="black")
+            comparePlots.setLegend()
+            comparePlots.saveFig(plotName)
+            print("Plot with Drag and vaccum comparisons saved to ",
+                plotPath + plotName)
+            self.plotNames.append(plotName)
+            comparePlots.closePlot()
+    ###########RESET#####################################
+    def _launchReset(self):
+        """
+        Set all inputs to zero,
+        Clear Stats
+        delete plots and data
+        """
+        for key, itemArr in self.inputs.items():
+            if key == "vacToggle" or key == "airToggle" or key == "compareToggle":
+                itemArr[1] = False
+            elif key == "dt": 
+                itemArr[1] = 0.1
+            elif  key=="dtSlider":
+                itemArr[0].setValue(0.1)
+            elif  key=="stepAngleSlider":
+                itemArr[0].setValue(0)
+            else: 
+                itemArr[1] = 0
+                itemArr[0].setText(str("0"))
+        # na the stats
+        self._initStats()
+        # delete old data and plots
+        self.rmDataAndPlots()
+
+    ##########################STATS AND INPUTS########################################
+    def _initStats(self):
+        # init all stats to NA
+        self.ui.sRangeLE.setText("NA")
+        self.ui.sHeightLE.setText("NA")
+        self.ui.sTimeLE.setText("NA")
+        self.ui.mRangeLE.setText("NA")
+        self.ui.mHeightLE.setText("NA")
+        self.ui.mTimeLE.setText("NA")
+        self.ui.cRangeLE.setText("NA")
+        self.ui.cHeightLE.setText("NA")
+        self.ui.cTimeLE.setText("NA")
+        self.ui.cRangeLE_2.setText("NA")
+        self.ui.cHeightLE_2.setText("NA")
+        self.ui.cTimeLE_2.setText("NA")
+        self.ui.cRangeLE_3.setText("NA")
+        self.ui.cHeightLE_3.setText("NA")
+        self.ui.cTimeLE_3.setText("NA")
+
+    def _outputStats(self):
+        # set all stats to NA
+        self._initStats()
+        # Fill in relevant stats
+        if self.trajType == "single":
+            df = pd.read_csv(self.dataPath)
+            range = df["x"].max()/1000
+            maxHeight = df["y"].max()/1000
+            flightTime = df["t"].max()
+            self.ui.sRangeLE.setText(str("{:.3f}".format(range))+" km")
+            self.ui.sHeightLE.setText(str("{:.3f}".format(maxHeight))+" km")
+            self.ui.sTimeLE.setText(str("{:.3f}".format(flightTime))+" s")
+        elif self.trajType == "multi":
+            df = pd.read_csv(self.dataPath)
+            range = df["x"].max()/1000
+            maxHeight = df["y"].max()/1000
+            flightTime = df["t"].max()
+            self.ui.mRangeLE.setText(str("{:.3f}".format(range))+" km")
+            self.ui.mHeightLE.setText(str("{:.3f}".format(maxHeight))+" km")
+            self.ui.mTimeLE.setText(str("{:.3f}".format(flightTime))+" s")
+        elif self.trajType == "compare":
+            self.df = pd.read_csv(self.dataPath)
+            self.df1 = self.df[self.df["id"] == "DRAG"]
+            self.df1.reset_index(inplace=True)
+            self.df2 = self.df[self.df["id"] == "NO_DRAG"]
+            self.df2.reset_index(inplace=True)
+            self.df3 = self.df[self.df["id"] == "HEIGHT_DRAG"]
+            self.df3.reset_index(inplace=True)
+            range1 = self.df1["x"].max()/1000 # in km
+            maxHeight1 = self.df1["y"].max()/1000
+            flightTime1 = self.df1["t"].max()
+            range2 = self.df2["x"].max()/1000
+            maxHeight2 = self.df2["y"].max()/1000
+            flightTime2 = self.df2["t"].max()
+            range3 = self.df3["x"].max()/1000
+            maxHeight3 = self.df3["y"].max()/1000
+            flightTime3 = self.df3["t"].max()
+            self.ui.cRangeLE.setText(str("{:.3f}".format(range1))+" km")
+            self.ui.cHeightLE.setText(str("{:.3f}".format(maxHeight1))+" km")
+            self.ui.cTimeLE.setText(str("{:.3f}".format(flightTime1))+" s")
+            self.ui.cRangeLE_2.setText(str("{:.3f}".format(range2))+" km")
+            self.ui.cHeightLE_2.setText(str("{:.3f}".format(maxHeight2))+" km")
+            self.ui.cTimeLE_2.setText(str("{:.3f}".format(flightTime2))+" s")
+            self.ui.cRangeLE_3.setText(str("{:.3f}".format(range3))+" km")
+            self.ui.cHeightLE_3.setText(str("{:.3f}".format(maxHeight3))+" km")
+            self.ui.cTimeLE_3.setText(str("{:.3f}".format(flightTime3))+" s")
+         
     def _outputInput(self):
         with open("inputs.dat", "w") as f:
             # write traj type
@@ -184,7 +415,8 @@ class MainWindow(QMainWindow):
                 f.writelines(" ".join(row))
                 f.write("\n")
     
-    def _createAnimation(self):
+    ###################ANIMATION###########################
+    def _Animation(self):
         # Create Animation
         if self.trajType == "single":
             self.isCompare = False
@@ -198,21 +430,24 @@ class MainWindow(QMainWindow):
             self.isCompare = True
             self.isMulti = False
             self.legend = True
-        ani = animations.Animation(self.dataPath,figSize=(6,5),isComparing=self.isCompare,isMulti=self.isMulti)
-        ani.decorateGraph(title = "Trajectory", xLabel="X (meters)",
+        
+        self.isRealTime = self.ui.realTimeRadioButton.isChecked()
+        self.ani = animations.Animation(self.dataPath,figSize=(6,5),
+        isComparing=self.isCompare,isMulti=self.isMulti, realTime=self.isRealTime)
+        self.ani.decorateGraph(title = "Trajectory", xLabel="X (meters)",
         yLabel= "Y (meters)",setLegend=self.legend)
-        ani.createAnimation(interval=1)
-        ani.saveAnimation()
+        self.ani.createAnimation()
+        self.ani.showPlot(Block = False)
 
-    def _updateDisplay(self):  
-        # Animation
-        # display the animation
-        self._createAnimation()
-        # initialize gif
-        self.movie = QMovie("Plots/graph.gif")
-        self.ui.displayLabel.setMovie(self.movie)
-        self.movie.start()
 
+    def _showRecentAnimation(self):
+        """Only show if data Exists (which means there is an animation to show)"""
+        if len(os.listdir(os.path.relpath("Data"))) != 0:
+            print("Showing Plot...")
+            self._Animation()
+        else: print("No recent animations available")
+
+############################INPUT HANDLING###################################
     def _updateTrajType(self):
         if self.inputs["compareToggle"][1]:
             self.trajType = "compare"
@@ -222,7 +457,6 @@ class MainWindow(QMainWindow):
             self.trajType = "single";
         else:
             self.trajType = "single";
-
         self.ui.typeLabel.setText(self.trajType)
             
     def storeLineValue(self, key):
@@ -235,7 +469,7 @@ class MainWindow(QMainWindow):
     def checkLineValue(self,key):
         """
         check for non numerical or negative values. If true,
-        then highlight lineEdit red and clear text
+        then highlight lineEdit red and clear text.
         """
         error = False
         lineEdit = self.inputs[key][0]
@@ -270,7 +504,7 @@ class MainWindow(QMainWindow):
         # store in label
         self.inputs[keyLabel][0].setText(str(sliderValue))
         self._updateTrajType() 
- 
+########################WINDOW FUNCTIONS#############################
     # restore of maximize window method
     def restore_or_maximize_window(self):
         # self is reference our mainwindow class object
@@ -325,3 +559,4 @@ try:
     sys.exit(app.exec_())
 except SystemExit:
     print("Closing Window...")
+    win.rmDataAndPlots()

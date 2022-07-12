@@ -21,10 +21,11 @@ enum trajType
 // -----------TRAJECTORY CLASS -------------
 class Trajectory
 {
-private:
+public:
     // Projectile
     Projectile shell;
     // General Trajectory Parameters
+    string traj_type = "";
     double g = 9.81; // gravity acceleration
     double dt = 0;
     double V = 0; // current speed
@@ -55,6 +56,7 @@ private:
     double range = 0;      // range of the trajectory in meters
     double flightTime = 0; // total time in the air
     double angleStep = 0;
+    double finalAngle = angle;
     // Condition toggle vars
     bool drag = false;      // Drag toggle
     bool adiabatic = false; // adiabatic conditions toggle
@@ -62,11 +64,7 @@ private:
     vector<double> xData; // x pos
     vector<double> yData; // y pos
     vector<double> vData; // velocity
-    // private helper functions
-    double findMaxY();          // finds and sets the height from yData
-    double interpolatedRange(); // returns interpolated range of a trajectory
 
-public:
     // Default constructor -> default scenario, simple projectile
     Trajectory();
     // The Parameterized Constructor -> initializes vars
@@ -82,6 +80,8 @@ public:
     void set_T(double t) { T0 = t; };
     void set_dt(double Dt) { dt = Dt; };
     void set_angleStep(double step) { angleStep = step; }
+    void set_finalAngle(double angle) {finalAngle = angle;}
+    void set_trajType(string type) {traj_type = type;}
     // Getters
     double getAngle() { return angle; }
     double getRange() { return range; }
@@ -93,14 +93,19 @@ public:
     void outputComparisonData(ofstream &f, enum trajType);
     void outputMultiData(ofstream &f, int trajNum);
     // Stats Output
-    void outputStatsSingle();                                                 // stats for single trajectory at fixed angle
-    void outputStatsMany(double initAngle, double finalAngle, double dTheta); // stats for varying angles, multiple trajectories
+    void outputStats();
     // CREATE TRAJECTORY
     void createTrajectory();
     // HELPER FUNCTIONS
     void updateAngle(double value);
+
+    private:
+        // private helper functions
+        double findMaxY();          // finds and sets the height from yData
+        double interpolatedRange(); // returns interpolated range of a trajectory
 };
 
 // Function to Output Multiple Trajectories
+void multiTrajStats(vector<Trajectory>trajArray); // stats output
 int findMaxTrajectory(vector<Trajectory> &trajArray, double &maxAngle,
                       double &maxRange, double &maxHeight, double &maxFlightTime);

@@ -1,0 +1,17 @@
+==========TRAJECTORY STATS MANY==========
+Adiabatic: false
+Drag: true
+PROJECTILE:
+mass = 100 kg 
+radius = 0.1 meters
+area cross section = 0.0314159 meters^2
+
+Custom Inputs:
+Angle Range: 51-50 degrees at steps of1degrees
+Drag Coeffiecient (C): 0.4
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 45
+
+TIME STAMP: 2022-07-11 11:58:19
+====================================
+

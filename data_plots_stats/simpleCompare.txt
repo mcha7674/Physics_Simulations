@@ -1,0 +1,16 @@
+trajType compare
+x0 0.0
+y0 0.0
+v0 45.0
+angle 45.0
+finalAngle 0.0
+mass 150.0
+radius 0.5
+C 0.3
+T0 290.0
+windV 0.0
+airToggle False
+vacToggle False
+compareToggle True
+stepAngle 0.0
+dt 0.1

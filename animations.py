@@ -1,11 +1,6 @@
 from matplotlib import pyplot as plt
-from numpy import block
 import pandas as pd
-from matplotlib.animation import PillowWriter
 from matplotlib.animation import FuncAnimation
-import matplotlib.colors
-import math
-import os
 """
 Writing a class that animates a plot as a gif
 Creates x vs y animation for a singular trajectory
@@ -101,8 +96,8 @@ class Animation():
         self.animation = FuncAnimation(self.fig,func=self._animate,interval = self.interval,
             frames=len(self.df["x"]),repeat=False,blit=False)        
 
-    def saveAnimation(self,gifPath = 'Plots/graph.gif',dpi = 300):
-        self.animation.save(gifPath,writer='pillow',fps=self.fps)
+    #def saveAnimation(self,gifPath = 'Plots/graph.gif',dpi = 300):
+        #self.animation.save(gifPath,writer='pillow',fps=self.fps)
 
     def showPlot(self,Block=False):
         plt.show(block = Block)

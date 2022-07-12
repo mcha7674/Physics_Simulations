@@ -1,11 +1,6 @@
-import subprocess
 from matplotlib import pyplot as plt
 import pandas as pd
-from os.path import exists
 import sys
-import os
-from PIL import Image  # 'Pillow' Imaging library
-import shutil
 
 class trajPlot():
     # Static class variables

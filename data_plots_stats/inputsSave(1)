@@ -1,0 +1,16 @@
+trajType multi
+x0 0
+y0 0
+v0 45.0
+angle 45.0
+finalAngle 50.0
+mass 100.0
+radius 0.1
+C 0.4
+T0 0
+windV 0
+airToggle True
+vacToggle False
+compareToggle False
+stepAngle 1
+dt 0.1

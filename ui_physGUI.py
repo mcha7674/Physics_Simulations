@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'physGUIFSlzcI.ui'
+## Form generated from reading UI file 'physGUIGZfFBC.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.3.1
 ##
@@ -16,9 +16,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QGroupBox,
-    QHBoxLayout, QLabel, QLineEdit, QMainWindow,
-    QPushButton, QRadioButton, QSizePolicy, QSlider,
-    QStackedWidget, QToolButton, QVBoxLayout, QWidget)
+    QHBoxLayout, QLabel, QLineEdit, QListView,
+    QListWidget, QListWidgetItem, QMainWindow, QPushButton,
+    QRadioButton, QSizePolicy, QSlider, QStackedWidget,
+    QToolButton, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -346,6 +347,7 @@ class Ui_MainWindow(object):
 
         self.frame = QFrame(self.homePage)
         self.frame.setObjectName(u"frame")
+        self.frame.setMinimumSize(QSize(0, 425))
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_7 = QVBoxLayout(self.frame)
@@ -359,8 +361,10 @@ class Ui_MainWindow(object):
         font4.setPointSize(14)
         self.Description.setFont(font4)
         self.Description.setTextFormat(Qt.RichText)
+        self.Description.setScaledContents(False)
         self.Description.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
         self.Description.setWordWrap(True)
+        self.Description.setIndent(7)
 
         self.verticalLayout_7.addWidget(self.Description)
 
@@ -1438,6 +1442,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_38.setContentsMargins(0, 0, 0, 0)
         self.label_2 = QLabel(self.frame_40)
         self.label_2.setObjectName(u"label_2")
+        self.label_2.setMinimumSize(QSize(162, 0))
         self.label_2.setFont(font5)
         self.label_2.setStyleSheet(u"border-bottom:1px solid white;")
 
@@ -1911,26 +1916,26 @@ class Ui_MainWindow(object):
         self.horizontalLayout_42 = QHBoxLayout(self.frame_48)
         self.horizontalLayout_42.setSpacing(0)
         self.horizontalLayout_42.setObjectName(u"horizontalLayout_42")
-        self.horizontalLayout_42.setContentsMargins(0, 0, 20, 22)
-        self.saveStatsButton = QPushButton(self.frame_48)
-        self.saveStatsButton.setObjectName(u"saveStatsButton")
-        sizePolicy1.setHeightForWidth(self.saveStatsButton.sizePolicy().hasHeightForWidth())
-        self.saveStatsButton.setSizePolicy(sizePolicy1)
-        self.saveStatsButton.setMinimumSize(QSize(100, 34))
-        self.saveStatsButton.setMaximumSize(QSize(100, 23))
-        self.saveStatsButton.setFont(font5)
-
-        self.horizontalLayout_42.addWidget(self.saveStatsButton)
-
+        self.horizontalLayout_42.setContentsMargins(0, 0, 0, 21)
         self.openStatsButton = QPushButton(self.frame_48)
         self.openStatsButton.setObjectName(u"openStatsButton")
         sizePolicy1.setHeightForWidth(self.openStatsButton.sizePolicy().hasHeightForWidth())
         self.openStatsButton.setSizePolicy(sizePolicy1)
-        self.openStatsButton.setMinimumSize(QSize(90, 35))
-        self.openStatsButton.setMaximumSize(QSize(98, 23))
+        self.openStatsButton.setMinimumSize(QSize(162, 34))
+        self.openStatsButton.setMaximumSize(QSize(100, 23))
         self.openStatsButton.setFont(font5)
 
         self.horizontalLayout_42.addWidget(self.openStatsButton)
+
+        self.saveStatsButton = QPushButton(self.frame_48)
+        self.saveStatsButton.setObjectName(u"saveStatsButton")
+        sizePolicy1.setHeightForWidth(self.saveStatsButton.sizePolicy().hasHeightForWidth())
+        self.saveStatsButton.setSizePolicy(sizePolicy1)
+        self.saveStatsButton.setMinimumSize(QSize(160, 34))
+        self.saveStatsButton.setMaximumSize(QSize(100, 23))
+        self.saveStatsButton.setFont(font5)
+
+        self.horizontalLayout_42.addWidget(self.saveStatsButton)
 
 
         self.horizontalLayout_43.addWidget(self.frame_48)
@@ -2088,8 +2093,111 @@ class Ui_MainWindow(object):
         self.verticalLayout_40.addWidget(self.frame_44)
 
         self.stackedWidget.addWidget(self.plotsPage)
+        self.settingsPage = QWidget()
+        self.settingsPage.setObjectName(u"settingsPage")
+        self.groupBox_60 = QGroupBox(self.settingsPage)
+        self.groupBox_60.setObjectName(u"groupBox_60")
+        self.groupBox_60.setGeometry(QRect(10, 0, 450, 350))
+        self.groupBox_60.setMinimumSize(QSize(450, 350))
+        self.groupBox_60.setMaximumSize(QSize(300, 300))
+        font14 = QFont()
+        font14.setPointSize(18)
+        font14.setBold(True)
+        self.groupBox_60.setFont(font14)
+        self.groupBox_60.setAlignment(Qt.AlignCenter)
+        self.verticalLayout_45 = QVBoxLayout(self.groupBox_60)
+        self.verticalLayout_45.setSpacing(0)
+        self.verticalLayout_45.setObjectName(u"verticalLayout_45")
+        self.verticalLayout_45.setContentsMargins(0, 45, 71, -1)
+        self.frame_60 = QFrame(self.groupBox_60)
+        self.frame_60.setObjectName(u"frame_60")
+        self.frame_60.setFrameShape(QFrame.StyledPanel)
+        self.frame_60.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_46 = QHBoxLayout(self.frame_60)
+        self.horizontalLayout_46.setSpacing(0)
+        self.horizontalLayout_46.setObjectName(u"horizontalLayout_46")
+        self.horizontalLayout_46.setContentsMargins(0, 0, 0, 0)
+        self.label_25 = QLabel(self.frame_60)
+        self.label_25.setObjectName(u"label_25")
+        self.label_25.setFont(font4)
 
-        self.gridLayout.addWidget(self.stackedWidget, 0, 0, 1, 1)
+        self.horizontalLayout_46.addWidget(self.label_25, 0, Qt.AlignHCenter)
+
+        self.clearInputMemButton = QPushButton(self.frame_60)
+        self.clearInputMemButton.setObjectName(u"clearInputMemButton")
+        self.clearInputMemButton.setMaximumSize(QSize(103, 41))
+        self.clearInputMemButton.setFont(font1)
+        self.clearInputMemButton.setStyleSheet(u"border-radius:5px;\n"
+"background-color: rgb(150, 0, 0);")
+
+        self.horizontalLayout_46.addWidget(self.clearInputMemButton)
+
+
+        self.verticalLayout_45.addWidget(self.frame_60)
+
+        self.frame_61 = QFrame(self.groupBox_60)
+        self.frame_61.setObjectName(u"frame_61")
+        self.frame_61.setFrameShape(QFrame.StyledPanel)
+        self.frame_61.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_45 = QHBoxLayout(self.frame_61)
+        self.horizontalLayout_45.setSpacing(0)
+        self.horizontalLayout_45.setObjectName(u"horizontalLayout_45")
+        self.horizontalLayout_45.setContentsMargins(0, 0, 0, 0)
+        self.label_38 = QLabel(self.frame_61)
+        self.label_38.setObjectName(u"label_38")
+        self.label_38.setFont(font4)
+
+        self.horizontalLayout_45.addWidget(self.label_38, 0, Qt.AlignHCenter)
+
+        self.clearStatsMemButton = QPushButton(self.frame_61)
+        self.clearStatsMemButton.setObjectName(u"clearStatsMemButton")
+        self.clearStatsMemButton.setMaximumSize(QSize(103, 41))
+        self.clearStatsMemButton.setFont(font1)
+        self.clearStatsMemButton.setStyleSheet(u"border-radius:5px;\n"
+"background-color: rgb(150, 0, 0);")
+
+        self.horizontalLayout_45.addWidget(self.clearStatsMemButton)
+
+
+        self.verticalLayout_45.addWidget(self.frame_61)
+
+        self.stackedWidget.addWidget(self.settingsPage)
+        self.helpPage = QWidget()
+        self.helpPage.setObjectName(u"helpPage")
+        self.verticalLayout_43 = QVBoxLayout(self.helpPage)
+        self.verticalLayout_43.setObjectName(u"verticalLayout_43")
+        self.groupBox = QGroupBox(self.helpPage)
+        self.groupBox.setObjectName(u"groupBox")
+        self.groupBox.setFont(font14)
+        self.groupBox.setAlignment(Qt.AlignCenter)
+        self.verticalLayout_44 = QVBoxLayout(self.groupBox)
+        self.verticalLayout_44.setSpacing(0)
+        self.verticalLayout_44.setObjectName(u"verticalLayout_44")
+        self.verticalLayout_44.setContentsMargins(0, 60, 0, 0)
+        self.listWidget = QListWidget(self.groupBox)
+        QListWidgetItem(self.listWidget)
+        QListWidgetItem(self.listWidget)
+        QListWidgetItem(self.listWidget)
+        QListWidgetItem(self.listWidget)
+        QListWidgetItem(self.listWidget)
+        QListWidgetItem(self.listWidget)
+        QListWidgetItem(self.listWidget)
+        QListWidgetItem(self.listWidget)
+        self.listWidget.setObjectName(u"listWidget")
+        self.listWidget.setFont(font4)
+        self.listWidget.setProperty("isWrapping", True)
+        self.listWidget.setLayoutMode(QListView.SinglePass)
+        self.listWidget.setSpacing(15)
+        self.listWidget.setWordWrap(True)
+
+        self.verticalLayout_44.addWidget(self.listWidget)
+
+
+        self.verticalLayout_43.addWidget(self.groupBox)
+
+        self.stackedWidget.addWidget(self.helpPage)
+
+        self.gridLayout.addWidget(self.stackedWidget, 0, 0, 1, 1, Qt.AlignTop)
 
 
         self.verticalLayout.addWidget(self.mainBodyFrame)
@@ -2235,7 +2343,7 @@ class Ui_MainWindow(object):
         self.realTimeRadioButton.setText(QCoreApplication.translate("MainWindow", u"Real Time", None))
         self.fastRadioButton.setText(QCoreApplication.translate("MainWindow", u"Fast", None))
         self.launchButton.setText(QCoreApplication.translate("MainWindow", u"LAUNCH", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Trajectory Stats", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Trajectory Quick Stats", None))
         self.singleStatsGroup.setTitle(QCoreApplication.translate("MainWindow", u"Single Trajectory Stats", None))
         self.label_17.setText(QCoreApplication.translate("MainWindow", u"Range:", None))
         self.label_22.setText(QCoreApplication.translate("MainWindow", u"Height:", None))
@@ -2257,8 +2365,8 @@ class Ui_MainWindow(object):
         self.label_35.setText(QCoreApplication.translate("MainWindow", u"Range:", None))
         self.label_36.setText(QCoreApplication.translate("MainWindow", u"Height:", None))
         self.label_37.setText(QCoreApplication.translate("MainWindow", u"Flight Time:", None))
-        self.saveStatsButton.setText(QCoreApplication.translate("MainWindow", u"Save Stats", None))
-        self.openStatsButton.setText(QCoreApplication.translate("MainWindow", u"Open Stats", None))
+        self.openStatsButton.setText(QCoreApplication.translate("MainWindow", u"Open Extended Stats", None))
+        self.saveStatsButton.setText(QCoreApplication.translate("MainWindow", u"Save Extended Stats", None))
         self.createPlotsButton.setText(QCoreApplication.translate("MainWindow", u"Create Plots", None))
         self.resetButton.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
         self.recentAnimButton.setText(QCoreApplication.translate("MainWindow", u"Show Recent Animation", None))
@@ -2266,6 +2374,33 @@ class Ui_MainWindow(object):
         self.plotDisplayLabel.setText(QCoreApplication.translate("MainWindow", u"No Plots Created to Display", None))
         self.nextPlotButton.setText(QCoreApplication.translate("MainWindow", u"Next Plot", None))
         self.savePlotsButton.setText(QCoreApplication.translate("MainWindow", u"Save Plots", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Github", None))
+        self.groupBox_60.setTitle(QCoreApplication.translate("MainWindow", u"Memory", None))
+        self.label_25.setText(QCoreApplication.translate("MainWindow", u"Clear Input Memory", None))
+        self.clearInputMemButton.setText(QCoreApplication.translate("MainWindow", u"Clear", None))
+        self.label_38.setText(QCoreApplication.translate("MainWindow", u"Clear Stats Memory", None))
+        self.clearStatsMemButton.setText(QCoreApplication.translate("MainWindow", u"Clear", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Launching a Projectile", None))
+
+        __sortingEnabled = self.listWidget.isSortingEnabled()
+        self.listWidget.setSortingEnabled(False)
+        ___qlistwidgetitem = self.listWidget.item(0)
+        ___qlistwidgetitem.setText(QCoreApplication.translate("MainWindow", u"1. There are three types of trajectory simulations: \"single\", \"multi\", and \"compare\"", None));
+        ___qlistwidgetitem1 = self.listWidget.item(1)
+        ___qlistwidgetitem1.setText(QCoreApplication.translate("MainWindow", u"        a.\"Compare\" will  compare adiabatic, non-adiabatic, and vaccum trajectories. ", None));
+        ___qlistwidgetitem2 = self.listWidget.item(2)
+        ___qlistwidgetitem2.setText(QCoreApplication.translate("MainWindow", u"        b.\"Multi\" will multiple single trajectories at varying angles as specified by a step angle and final angle ", None));
+        ___qlistwidgetitem3 = self.listWidget.item(3)
+        ___qlistwidgetitem3.setText(QCoreApplication.translate("MainWindow", u"        c.\"Single\" will simply launch one trajectory at a single angle", None));
+        ___qlistwidgetitem4 = self.listWidget.item(4)
+        ___qlistwidgetitem4.setText(QCoreApplication.translate("MainWindow", u"2. Pressing the launch button will create an animation of your trajectory", None));
+        ___qlistwidgetitem5 = self.listWidget.item(5)
+        ___qlistwidgetitem5.setText(QCoreApplication.translate("MainWindow", u"3. Static Plots of your trajectories can be generated by clicking the \"Create Plot\" button", None));
+        ___qlistwidgetitem6 = self.listWidget.item(6)
+        ___qlistwidgetitem6.setText(QCoreApplication.translate("MainWindow", u"4. All data/inputs can be saved and loaded by clicking the respective save/load buttons ", None));
+        ___qlistwidgetitem7 = self.listWidget.item(7)
+        ___qlistwidgetitem7.setText(QCoreApplication.translate("MainWindow", u"5. All plots can be observed and saved in the \"Plots\" page located in the side menu bar", None));
+        self.listWidget.setSortingEnabled(__sortingEnabled)
+
+        self.label.setText("")
     # retranslateUi
 

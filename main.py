@@ -1,21 +1,21 @@
-from genericpath import exists
+from importlib.metadata import files
 import sys
 import subprocess
 import pandas as pd
 from PySide6.QtWidgets import QSizeGrip
 from PySide6.QtCore import QPropertyAnimation,QEasingCurve
-from PySide6.QtWidgets import QMessageBox
-from PySide6.QtGui import QMovie
+from PySide6.QtWidgets import QMessageBox,QDialog,QFileDialog
 from ui_physGUI import * # import GUI file
 import animations # custom import
 import plots # custom import
 import os
 import shutil
+from os.path import expanduser
 """
 Contains all code and handling for gui interface
 """
 class MainWindow(QMainWindow):
-    pages = {"home":0,"launch":1,"plots":2}
+    pages = {"home":0,"launch":1,"plots":2,"settings":3,"help":4}
     def __init__(self):
         super().__init__()  # grab inherited constructor
         self.ui = Ui_MainWindow()
@@ -25,7 +25,7 @@ class MainWindow(QMainWindow):
         # Remove window title bar
         self.setWindowFlags(Qt.FramelessWindowHint)
         # Set main background to be transparent
-        self.setAttribute(Qt.WA_TranslucentBackground)
+        #self.setAttribute(Qt.WA_TranslucentBackground)
         # Add Window Size Grip Feature
         QSizeGrip(self.ui.size_grip)
         # initialize statistics
@@ -48,6 +48,8 @@ class MainWindow(QMainWindow):
         self.ui.homeButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(0))
         self.ui.launchMenuButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(1))
         self.ui.plotsButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(2))
+        self.ui.settingButton.clicked.connect(lambda : self.settingsPage())
+        self.ui.helpButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(4))
         ###### Grab Inputs ######
         self.inputs = \
         {   # value is in  [inputObject, value]
@@ -101,7 +103,21 @@ class MainWindow(QMainWindow):
         self.ui.recentAnimButton.clicked.connect(lambda:self._showRecentAnimation())
         # Reset Button
         self.ui.resetButton.clicked.connect(lambda:self._launchReset())
-
+        # Save inputs button
+        self.ui.saveInputsButton.clicked.connect(lambda:self._saveInputs())
+        # Load Inputs button
+        self.ui.loadInputsButton.clicked.connect(lambda:self._loadInputs())
+        # Save Data button
+        self.ui.saveDataButton.clicked.connect(lambda:self._saveData())
+        # Save Stats Button
+        self.ui.saveStatsButton.clicked.connect(lambda:self._saveStats())
+        # Open Stats Button
+        self.ui.openStatsButton.clicked.connect(lambda:self._openStats())
+        # Save Plots button
+        self.ui.savePlotsButton.clicked.connect(lambda:self._savePlots())
+        # Clear Stats and Clear Inputs Buttons
+        self.ui.clearInputMemButton.clicked.connect(lambda:self._clearMem("Inputs", self.ui.clearInputMemButton))
+        self.ui.clearStatsMemButton.clicked.connect(lambda:self._clearMem("Stats", self.ui.clearStatsMemButton))
         
     def launch(self):
         """ The MOTHER function
@@ -311,7 +327,15 @@ class MainWindow(QMainWindow):
                 plotPath + plotName)
             self.plotNames.append(plotName)
             comparePlots.closePlot()
-    ###########RESET#####################################
+    ###########RESET LAUNCH INPUTS AND STATS and Clear#####################################
+    def _clearMem(self, directory, buttonObj, mother_folder = "data_plots_stats"):
+        for filename in os.listdir(directory):
+                f = os.path.join(directory, filename)
+                if os.path.isfile(f):
+                    shutil.copy(f, mother_folder)
+                    os.remove(f)
+        buttonObj.setText("Cleared")
+
     def _launchReset(self):
         """
         Set all inputs to zero,
@@ -335,7 +359,113 @@ class MainWindow(QMainWindow):
         # delete old data and plots
         self.rmDataAndPlots()
 
-    ##########################STATS AND INPUTS########################################
+    ##########################STATS AND INPUTS OUTPUT/SAVING AND LOADING########################################
+    def _savePlots(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Critical)
+        if not os.listdir("Plots/"):
+            msg.setWindowTitle("Save Error")
+            msg.setText("No Plots to save!")
+            msg.setInformativeText("Launch a projectile and press the 'create plots' button.")
+            msg.exec()
+        else:
+            home = expanduser("~")
+            folderName = QFileDialog.getExistingDirectory(self, 'Select Save Location for Plots', home)
+            for filename in os.listdir("Plots"): 
+                shutil.copy("Plots/"+filename, folderName)
+        
+
+    def _saveStats(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Critical)
+        if not os.listdir("Stats/"):
+            msg.setWindowTitle("Save Error")
+            msg.setText("No Stats to save!")
+            msg.setInformativeText("Launch a projectile first")
+            msg.exec()
+        else:
+            home = expanduser("~")
+            folderName = QFileDialog.getExistingDirectory(self, 'Select Save Location', home)
+            # create file and copy contents
+            shutil.copy("Stats/stats.txt", folderName)     
+
+    def _saveData(self):
+        # Open data file
+        options = QFileDialog.Options()
+        fileName,_ = QFileDialog.getOpenFileName(self,
+        caption = "Choose Data",dir = "Data/",filter="CSV Files (*.csv)",options=options)
+        # error handling
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Critical)
+        if not os.listdir("Data/"):
+            msg.setWindowTitle("Save Error")
+            msg.setText("No data to save!")
+            msg.setInformativeText("Launch a projectile first")
+            msg.exec()
+        else: # save data at folder location
+            home = expanduser("~") # home directory for user
+            folderName = QFileDialog.getExistingDirectory(self, 'Select Save Location', home)
+            # create file and copy contents
+            shutil.copy(fileName, folderName)               
+
+    def _saveInputs(self):
+        options = QFileDialog.Options()
+        fileName,_ = QFileDialog.getSaveFileName(self,
+        caption = "Save Input",dir = "Inputs/",filter="Text Files (*.txt)",options=options)
+        # create file and copy contents
+        shutil.copy("inputs.txt", fileName)
+
+    def _openStats(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Critical)
+        if not os.listdir("Stats/"):
+            msg.setWindowTitle("Open Error")
+            msg.setText("No Stats to Open!")
+            msg.setInformativeText("Launch a projectile first")
+            msg.exec()
+        else:
+            # options = QFileDialog.Options()
+            # fileName,_ = QFileDialog.getOpenFileName(self,
+            # caption = "Open Stats",dir = "Stats/",filter="Text Files (*.txt)",options=options)
+            os.startfile(os.path.abspath("Stats/stats.txt"))
+
+    def _loadInputs(self):
+        options = QFileDialog.Options()
+        fileName,_ = QFileDialog.getOpenFileName(self,
+        caption = "Load Input",dir = "Inputs/",filter="Text Files (*.txt)",options=options)
+        # load inputs onto main inputs file
+        shutil.copy(fileName, "inputs.txt")
+        # create file and copy contents
+        with open("inputs.txt","r") as file:
+            # load inputs onto variables
+            for line in file:
+                line = tuple(line.split())
+                key = line[0]
+                val = line[1]
+                if key == "trajType": continue
+                if val == "True": 
+                    self.inputs[key][1] = True
+                elif val == "False": 
+                    self.inputs[key][1] = False
+                else: self.inputs[key][1] = float(val)
+            # set sliders
+            self.inputs["dtSlider"][1] = self.inputs["dt"][1]
+            self.inputs["stepAngleSlider"][1] = self.inputs["stepAngle"][1]
+        # set text of inputs
+        for key, itemArr in self.inputs.items():
+            obj = itemArr[0]
+            value = itemArr[1]
+            print("Key = ", key, " | val = ",value, "valueType = ",type(value))
+            # dont store sliders
+            if key == "dtSlider" or key == "stepAngleSlider":
+                obj.setValue(value)
+            elif key == "airToggle" or key == "vacToggle" or key == "compareToggle":
+                if value : obj.setChecked(True)
+            else: obj.setText(str(value))
+
+        self._updateTrajType()
+        
+
     def _initStats(self):
         # init all stats to NA
         self.ui.sRangeLE.setText("NA")
@@ -402,7 +532,7 @@ class MainWindow(QMainWindow):
             self.ui.cTimeLE_3.setText(str("{:.3f}".format(flightTime3))+" s")
          
     def _outputInput(self):
-        with open("inputs.dat", "w") as f:
+        with open("inputs.txt", "w") as f:
             # write traj type
             typeRow = ["trajType",str(self.trajType)]
             f.writelines(" ".join(typeRow))
@@ -490,7 +620,6 @@ class MainWindow(QMainWindow):
     def storeToggle(self,key):
         value = self.inputs[key][0].isChecked()
         self.inputs[key][1]= value
-        print(value)
         self._updateTrajType() 
 
     def storeSlider(self, key, keyLabel):
@@ -503,7 +632,12 @@ class MainWindow(QMainWindow):
         #print("KEYLABEL = ", )
         # store in label
         self.inputs[keyLabel][0].setText(str(sliderValue))
-        self._updateTrajType() 
+        self._updateTrajType()
+    
+    def settingsPage(self):
+        self.ui.clearInputMemButton.setText("Clear")
+        self.ui.clearStatsMemButton.setText("Clear")
+        self.ui.stackedWidget.setCurrentIndex(3)
 ########################WINDOW FUNCTIONS#############################
     # restore of maximize window method
     def restore_or_maximize_window(self):
@@ -546,8 +680,6 @@ class MainWindow(QMainWindow):
         self.animation.setEndValue(newWidth)#end value is the new menu width
         self.animation.setEasingCurve(QEasingCurve.InOutQuart)
         self.animation.start()
-
-    
          
 ##########################################################
 # EXECUTE APP

@@ -31,17 +31,8 @@ int main()
     string trajType = "";
     vector <double> numericInputs;
     vector <bool> booleanInputs;
-    string filename = "inputs.dat";
+    string filename = "inputs.txt";
     handleFileInputs(filename, numericInputs, booleanInputs, trajType);
-    for (int i = 0; i < numericInputs.size();i++)
-    {
-        cout << numericInputs[i] << endl;
-    }
-    for (int i = 0; i < booleanInputs.size();i++)
-    {
-        cout << boolalpha <<booleanInputs[i] << endl;
-    }
-    cout << trajType << endl;
     // general trajectory parameters - init like this for readability
     double X0 = numericInputs[0];
     double Y0 = numericInputs[1];
@@ -61,7 +52,6 @@ int main()
     double dt = numericInputs[11];
     if (T0 != 0 || trajType == "compare"){adiabatic = true;}
     // Trajectory Customization!!! --- SINGLE TRAJECTORY
-    cout << "final angle: "<< finalAngle << endl;
     if (trajType == "single")
     {
         Projectile shell(mass, radius);
@@ -77,7 +67,7 @@ int main()
         traj.outputData(f);
         cout << "Trajectory data stored!" << endl
              << endl;
-        traj.outputStatsSingle();
+        traj.outputStats();
         cout << "Stats stored!" << endl;
         f.close();
     }
@@ -90,7 +80,9 @@ int main()
         {
         Trajectory traj(angle, V0, X0, Y0, dt, C, vWindX, T0,
                         airToggle, adiabatic, shell);
+        traj.set_trajType(trajType);
         traj.set_angleStep(stepAngle);
+        traj.set_finalAngle(finalAngle);
         traj.createTrajectory();
         // store trajectory
         trajArray.push_back(traj);
@@ -105,10 +97,12 @@ int main()
         for (int i = 0; i < trajArray.size(); i++)
         {
             int trajNum = i+1;
-            trajArray[i].outputMultiData(f, trajNum);
+            trajArray[i].outputMultiData(f,trajNum);
             cout << "Trajectory " << trajNum << " data stored!" << endl
                  << endl;
         }
+        // output multi traj statistics
+        multiTrajStats(trajArray);
         f.close();
         // Find max Trajectory
         cout << "Finding and outputting max trajectory data..." << endl;
@@ -124,7 +118,6 @@ int main()
         trajArray[maxTrajIndex].outputData(f2);
         cout << "Max trajectory data stored in '" << filename << "'" << endl
              << endl;
-        trajArray[0].outputStatsMany(angle, finalAngle, stepAngle);
         f2.close();
     }
     else if (trajType == "compare")
@@ -157,9 +150,9 @@ int main()
         cout << "Trajectory data stored!" << endl
              << endl;
         cout << "Storing Stats..." << endl;
-        trajDrag.outputStatsSingle();
-        trajHeightDrag.outputStatsSingle();
-        trajNoDrag.outputStatsSingle();
+        trajDrag.outputStats();
+        trajHeightDrag.outputStats();
+        trajNoDrag.outputStats();
         cout << "Stats stored!" << endl;
         f.close();
     }

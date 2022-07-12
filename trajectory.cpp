@@ -194,66 +194,81 @@ void Trajectory::outputComparisonData(ofstream &f, trajType type)
     }
 }
 
-void Trajectory::outputStatsSingle()
+void Trajectory::outputStats()
 {
-    // output to stats file
-    string filename = "Stats/stats_single.txt";
+    string filename = "Stats/stats.txt";
     ofstream f(filename, ios_base::out | ios_base::app); // append
-    f << "==========TRAJECTORY STATS==========" << endl;
+    f << "================TRAJECTORY STATS================" << endl;
     f << "Adiabatic: " << boolalpha << adiabatic << endl;
     f << "Drag: " << boolalpha << drag << endl;
     f << "maxH: " << maxHeight << " meters" << endl;
     f << "Range: " << range << " meters" << endl;
-    f << "flightTime: " << flightTime << " seconds" << endl;
+    f << "flightTime: " << flightTime << " seconds" << endl <<endl;
     f << "PROJECTILE:" << endl;
     f << "mass = " << shell.get_mass() << " kg " << endl;
     f << "radius = " << shell.get_radius() << " meters" << endl;
     f << "area cross section = " << shell.get_CrossSection() << " meters^2" << endl;
-    f << "Custom Inputs:" << endl;
+    f << "Custom Inputs:" << endl<<endl;
     f << "Drag Coeffiecient (C): " << C << endl;
     f << "Chosen Wind Velocity: " << vWindX << endl;
     f << "Chosen Initial Velocity: " << v0 << endl;
     f << "Chosen Angle: " << angle << endl;
-    // TIME STAMP using chrono library and output to f using iomanip
-    auto now = chrono::system_clock::now();
-    auto UTC = chrono::duration_cast<chrono::seconds>(now.time_since_epoch()).count();
-    auto in_time_t = chrono::system_clock::to_time_t(now);
-    f << "\nTIME STAMP: " << put_time(localtime(&in_time_t), "%Y-%m-%d %X") << endl;
-    f << "====================================" << endl
-      << endl;
-}
-
-void Trajectory::outputStatsMany(double initAngle, double finalAngle, double dTheta)
-{
-    // output to stats file
-    string filename = "Stats/stats_multi.txt";
-    ofstream f(filename, ios_base::out | ios_base::app); // append
-    f << "==========TRAJECTORY STATS MANY==========" << endl;
-    f << "Adiabatic: " << boolalpha << adiabatic << endl;
-    f << "Drag: " << boolalpha << drag << endl;
-    f << "PROJECTILE:" << endl;
-    f << "mass = " << shell.get_mass() << " kg " << endl;
-    f << "radius = " << shell.get_radius() << " meters" << endl;
-    f << "area cross section = " << shell.get_CrossSection() << " meters^2" << endl;
-    f << endl;
-    f << "Custom Inputs:" << endl;
-    f << "Angle Range: " << initAngle << "-" << finalAngle << " degrees "
-      << "at steps of" << dTheta << "degrees" << endl;
-    f << "Drag Coeffiecient (C): " << C << endl;
+    f << "Angle Range: " << angle << "-" << finalAngle << " degrees "
+      << "at steps of" << angleStep << "degrees" << endl;
     if (adiabatic)
     {
         f << "Chosen atmospheric temperature: " << T0 << endl;
     }
-    f << "Chosen Wind Velocity: " << vWindX << endl;
-    f << "Chosen Initial Velocity: " << v0 << endl;
     // TIME STAMP using chrono library and output to f using iomanip
     auto now = chrono::system_clock::now();
     auto UTC = chrono::duration_cast<chrono::seconds>(now.time_since_epoch()).count();
     auto in_time_t = chrono::system_clock::to_time_t(now);
     f << "\nTIME STAMP: " << put_time(localtime(&in_time_t), "%Y-%m-%d %X") << endl;
-    f << "====================================" << endl
+    f << "================================================" << endl
       << endl;
 }
+
+void multiTrajStats(vector<Trajectory>trajArray)
+{
+    string filename = "Stats/stats.txt";
+    ofstream f(filename, ios_base::out | ios_base::app); // append
+    Trajectory traj1 = trajArray[0];
+    f << "================TRAJECTORY STATS================" << endl;
+    f << "GENERAL INPUTS:"<<endl;
+    f << "Adiabatic: " << boolalpha << traj1.adiabatic << endl;
+    f << "Drag: " << boolalpha << traj1.drag << endl;
+    f << "Drag Coeffiecient (C): " << traj1.C << endl;
+    f << "Chosen Wind Velocity: " << traj1.vWindX << endl;
+    f << "Chosen Initial Velocity: " << traj1.v0 << endl;
+    f << "Chosen Angle: " << traj1.angle << endl;
+    f << "Angle Range: " << traj1.angle << "-" << traj1.finalAngle << " degrees "
+    << "at steps of" << traj1.angleStep << "degrees" << endl;
+    if (traj1.adiabatic)
+    {
+        f << "Chosen atmospheric temperature: " << traj1.T0 << endl;
+    }
+    f << "\nPROJECTILE:" << endl;
+    f << "mass = " << traj1.shell.get_mass() << " kg " << endl;
+    f << "radius = " << traj1.shell.get_radius() << " meters" << endl;
+    f << "area cross section = " << traj1.shell.get_CrossSection() << " meters^2" << endl<<endl;
+    for (int i = 0; i < trajArray.size();i++)
+    {
+        f << "TRAJECTORY NUMBER "<< i << ": (";   
+        f << "maxH =" << trajArray[i].maxHeight << " meters, ";
+        f << "Range: " << trajArray[i].range << " meters, ";
+        f << "flightTime: " << trajArray[i].flightTime << " seconds, ";
+        f << "Angle: " << trajArray[i].angle << " degrees)" << endl <<endl;
+    }
+    // TIME STAMP using chrono library and output to f using iomanip
+    auto now = chrono::system_clock::now();
+    auto UTC = chrono::duration_cast<chrono::seconds>(now.time_since_epoch()).count();
+    auto in_time_t = chrono::system_clock::to_time_t(now);
+    f << "\nTIME STAMP: " << put_time(localtime(&in_time_t), "%Y-%m-%d %X") << endl;
+    f << "================================================" << endl
+    << endl;
+
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // OUTSIDE OF CLASS

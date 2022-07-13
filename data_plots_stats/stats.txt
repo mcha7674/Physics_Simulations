@@ -1,106 +1,4 @@
 ================TRAJECTORY STATS================
-GENERAL INPUTS:
-Adiabatic: false
-Drag: false
-Drag Coeffiecient (C): 0
-Chosen Wind Velocity: 0
-Chosen Initial Velocity: 45
-Chosen Angle: 45
-Angle Range: 45-60 degrees at steps of1degrees
-
-PROJECTILE:
-mass = 0 kg 
-radius = 0 meters
-area cross section = 0 meters^2
-
-TRAJECTORY NUMBER 0: (maxH =51.5961 meters, Range: 206.506 meters, flightTime: 6.5 seconds)
-
-TRAJECTORY NUMBER 1: (maxH =53.4064 meters, Range: 206.395 meters, flightTime: 6.6 seconds)
-
-TRAJECTORY NUMBER 2: (maxH =55.1952 meters, Range: 205.924 meters, flightTime: 6.8 seconds)
-
-TRAJECTORY NUMBER 3: (maxH =56.9993 meters, Range: 205.301 meters, flightTime: 6.9 seconds)
-
-TRAJECTORY NUMBER 4: (maxH =58.7804 meters, Range: 204.426 meters, flightTime: 7 seconds)
-
-TRAJECTORY NUMBER 5: (maxH =60.5657 meters, Range: 203.301 meters, flightTime: 7.1 seconds)
-
-TRAJECTORY NUMBER 6: (maxH =62.3288 meters, Range: 201.927 meters, flightTime: 7.2 seconds)
-
-TRAJECTORY NUMBER 7: (maxH =64.0889 meters, Range: 200.305 meters, flightTime: 7.3 seconds)
-
-TRAJECTORY NUMBER 8: (maxH =65.8233 meters, Range: 198.439 meters, flightTime: 7.4 seconds)
-
-TRAJECTORY NUMBER 9: (maxH =67.5518 meters, Range: 196.329 meters, flightTime: 7.5 seconds)
-
-TRAJECTORY NUMBER 10: (maxH =69.2467 meters, Range: 193.979 meters, flightTime: 7.6 seconds)
-
-TRAJECTORY NUMBER 11: (maxH =70.9371 meters, Range: 191.393 meters, flightTime: 7.7 seconds)
-
-TRAJECTORY NUMBER 12: (maxH =72.5844 meters, Range: 188.637 meters, flightTime: 7.7 seconds)
-
-TRAJECTORY NUMBER 13: (maxH =74.2273 meters, Range: 185.577 meters, flightTime: 7.8 seconds)
-
-TRAJECTORY NUMBER 14: (maxH =75.8277 meters, Range: 182.292 meters, flightTime: 7.9 seconds)
-
-TRAJECTORY NUMBER 15: (maxH =77.4045 meters, Range: 178.786 meters, flightTime: 8 seconds)
-
-
-TIME STAMP: 2022-07-11 23:31:59
-================================================
-
-================TRAJECTORY STATS================
-GENERAL INPUTS:
-Adiabatic: false
-Drag: false
-Drag Coeffiecient (C): 0
-Chosen Wind Velocity: 0
-Chosen Initial Velocity: 45
-Chosen Angle: 45
-Angle Range: 45-60 degrees at steps of1degrees
-
-PROJECTILE:
-mass = 0 kg 
-radius = 0 meters
-area cross section = 0 meters^2
-
-TRAJECTORY NUMBER 0: (maxH =51.5961 meters, Range: 206.506 meters, flightTime: 6.5 seconds, Angle: 45 degrees)
-
-TRAJECTORY NUMBER 1: (maxH =53.4064 meters, Range: 206.395 meters, flightTime: 6.6 seconds, Angle: 46 degrees)
-
-TRAJECTORY NUMBER 2: (maxH =55.1952 meters, Range: 205.924 meters, flightTime: 6.8 seconds, Angle: 47 degrees)
-
-TRAJECTORY NUMBER 3: (maxH =56.9993 meters, Range: 205.301 meters, flightTime: 6.9 seconds, Angle: 48 degrees)
-
-TRAJECTORY NUMBER 4: (maxH =58.7804 meters, Range: 204.426 meters, flightTime: 7 seconds, Angle: 49 degrees)
-
-TRAJECTORY NUMBER 5: (maxH =60.5657 meters, Range: 203.301 meters, flightTime: 7.1 seconds, Angle: 50 degrees)
-
-TRAJECTORY NUMBER 6: (maxH =62.3288 meters, Range: 201.927 meters, flightTime: 7.2 seconds, Angle: 51 degrees)
-
-TRAJECTORY NUMBER 7: (maxH =64.0889 meters, Range: 200.305 meters, flightTime: 7.3 seconds, Angle: 52 degrees)
-
-TRAJECTORY NUMBER 8: (maxH =65.8233 meters, Range: 198.439 meters, flightTime: 7.4 seconds, Angle: 53 degrees)
-
-TRAJECTORY NUMBER 9: (maxH =67.5518 meters, Range: 196.329 meters, flightTime: 7.5 seconds, Angle: 54 degrees)
-
-TRAJECTORY NUMBER 10: (maxH =69.2467 meters, Range: 193.979 meters, flightTime: 7.6 seconds, Angle: 55 degrees)
-
-TRAJECTORY NUMBER 11: (maxH =70.9371 meters, Range: 191.393 meters, flightTime: 7.7 seconds, Angle: 56 degrees)
-
-TRAJECTORY NUMBER 12: (maxH =72.5844 meters, Range: 188.637 meters, flightTime: 7.7 seconds, Angle: 57 degrees)
-
-TRAJECTORY NUMBER 13: (maxH =74.2273 meters, Range: 185.577 meters, flightTime: 7.8 seconds, Angle: 58 degrees)
-
-TRAJECTORY NUMBER 14: (maxH =75.8277 meters, Range: 182.292 meters, flightTime: 7.9 seconds, Angle: 59 degrees)
-
-TRAJECTORY NUMBER 15: (maxH =77.4045 meters, Range: 178.786 meters, flightTime: 8 seconds, Angle: 60 degrees)
-
-
-TIME STAMP: 2022-07-11 23:34:21
-================================================
-
-================TRAJECTORY STATS================
 Adiabatic: false
 Drag: false
 maxH: 51.5961 meters
@@ -119,6 +17,6 @@ Chosen Initial Velocity: 45
 Chosen Angle: 45
 Angle Range: 45-0 degrees at steps of0degrees
 
-TIME STAMP: 2022-07-11 23:48:18
+TIME STAMP: 2022-07-13 09:11:39
 ================================================
 

@@ -7,8 +7,11 @@ from PySide6.QtCore import QPropertyAnimation,QEasingCurve
 from PySide6.QtWidgets import QMessageBox,QDialog,QFileDialog
 from ui_physGUI import * # import GUI file
 import animations # custom import
+from matplotlib import use
+use('Qt5Agg')
 import plots # custom import
 import os
+from os import path
 import shutil
 from os.path import expanduser
 """
@@ -409,11 +412,19 @@ class MainWindow(QMainWindow):
             shutil.copy(fileName, folderName)               
 
     def _saveInputs(self):
-        options = QFileDialog.Options()
-        fileName,_ = QFileDialog.getSaveFileName(self,
-        caption = "Save Input",dir = "Inputs/",filter="Text Files (*.txt)",options=options)
-        # create file and copy contents
-        shutil.copy("inputs.txt", fileName)
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Critical)
+        if not os.listdir("Data/"):
+            msg.setWindowTitle("Save Error")
+            msg.setText("No Inputs to save!")
+            msg.setInformativeText("Launch a projectile first")
+            msg.exec()
+        else:
+            options = QFileDialog.Options()
+            fileName,_ = QFileDialog.getSaveFileName(self,
+            caption = "Save Input",dir = "Inputs/",filter="Text Files (*.txt)",options=options)
+            # create file and copy contents
+            shutil.copy("inputs.txt", fileName)
 
     def _openStats(self):
         msg = QMessageBox()
@@ -682,13 +693,29 @@ class MainWindow(QMainWindow):
         self.animation.start()
          
 ##########################################################
+# Create Necessary Binaries if dont exist
+data_exists = path.exists("Data") 
+plots_exists = path.exists("Plots")
+stats_exists = path.exists("Stats")
+inputs_exists = path.exists("Inputs")
+motherFolder_exists = path.exists("data_plots_stats")
+if (not data_exists):
+    os.mkdir("Data")
+if (not plots_exists):
+    os.mkdir("Plots")
+if (not stats_exists):
+    os.mkdir("Stats")
+if (not inputs_exists):
+    os.mkdir("Inputs")
+if (not motherFolder_exists):
+    os.mkdir("data_plots_stats")
 # EXECUTE APP
 app = QApplication(sys.argv)
 win = MainWindow()
 win.show()  # show main window object
 # EXIT
 try:
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 except SystemExit:
     print("Closing Window...")
     win.rmDataAndPlots()

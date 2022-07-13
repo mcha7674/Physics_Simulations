@@ -1,6 +1,8 @@
+from matplotlib import use
 from matplotlib import pyplot as plt
 import pandas as pd
 from matplotlib.animation import FuncAnimation
+use('Qt5Agg')
 """
 Writing a class that animates a plot as a gif
 Creates x vs y animation for a singular trajectory

@@ -1,0 +1,22 @@
+================TRAJECTORY STATS================
+Adiabatic: false
+Drag: false
+maxH: 51.5961 meters
+Range: 206.506 meters
+flightTime: 6.5 seconds
+
+PROJECTILE:
+mass = 0 kg 
+radius = 0 meters
+area cross section = 0 meters^2
+Custom Inputs:
+
+Drag Coeffiecient (C): 0
+Chosen Wind Velocity: 0
+Chosen Initial Velocity: 45
+Chosen Angle: 45
+Angle Range: 45-0 degrees at steps of0degrees
+
+TIME STAMP: 2022-07-13 15:32:38
+================================================
+
